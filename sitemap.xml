@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://somefish475.github.io/tags/index.html</loc>
+    
+    <lastmod>2016-05-03T17:15:52.035Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://somefish475.github.io/categories/index.html</loc>
     
     <lastmod>2016-05-03T17:10:13.195Z</lastmod>
