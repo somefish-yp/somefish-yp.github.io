@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://somefish475.github.io/"/>
   <updated>2016-05-02T04:39:36.121Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://somefish475.github.io/</id>
   
   <author>
     <name>somefish</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>hello-test</title>
-    <link href="http://yoursite.com/2016/05/02/test/"/>
-    <id>http://yoursite.com/2016/05/02/test/</id>
+    <link href="http://somefish475.github.io/2016/05/02/test/"/>
+    <id>http://somefish475.github.io/2016/05/02/test/</id>
     <published>2016-05-02T04:37:29.047Z</published>
     <updated>2016-05-02T04:39:36.121Z</updated>
     
@@ -37,8 +37,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2016/05/02/hello-world/"/>
-    <id>http://yoursite.com/2016/05/02/hello-world/</id>
+    <link href="http://somefish475.github.io/2016/05/02/hello-world/"/>
+    <id>http://somefish475.github.io/2016/05/02/hello-world/</id>
     <published>2016-05-02T02:41:46.120Z</published>
     <updated>2016-05-02T02:41:46.120Z</updated>
     
