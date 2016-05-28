@@ -713,8 +713,8 @@ public synchronized E peek() {
           
             <h2 id="理解Vector"><a href="#理解Vector" class="headerlink" title="理解Vector"></a>理解Vector</h2><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
 <p>Vector也是比较简单的数据结构。<br>可重复,允许null的集合<br>初始化容量大小为10<br>两倍容量大小自动扩容<br>可用Iterator进行遍历</p>
-<h2 id="add方法"><a href="#add方法" class="headerlink" title="add方法"></a>add方法</h2></blockquote>
-<pre><code>private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+</blockquote>
+<h2 id="add方法"><a href="#add方法" class="headerlink" title="add方法"></a>add方法</h2><pre><code>private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
   public synchronized boolean add(E e) {
     modCount++;

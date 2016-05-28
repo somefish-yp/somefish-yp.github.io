@@ -213,12 +213,12 @@ public synchronized E peek() {
     <link href="http://somefish475.github.io/2016/05/09/Vector/"/>
     <id>http://somefish475.github.io/2016/05/09/Vector/</id>
     <published>2016-05-09T14:49:20.818Z</published>
-    <updated>2016-05-28T11:33:47.197Z</updated>
+    <updated>2016-05-28T11:36:37.690Z</updated>
     
     <content type="html">&lt;h2 id=&quot;理解Vector&quot;&gt;&lt;a href=&quot;#理解Vector&quot; class=&quot;headerlink&quot; title=&quot;理解Vector&quot;&gt;&lt;/a&gt;理解Vector&lt;/h2&gt;&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;Vector也是比较简单的数据结构。&lt;br&gt;可重复,允许null的集合&lt;br&gt;初始化容量大小为10&lt;br&gt;两倍容量大小自动扩容&lt;br&gt;可用Iterator进行遍历&lt;/p&gt;
-&lt;h2 id=&quot;add方法&quot;&gt;&lt;a href=&quot;#add方法&quot; class=&quot;headerlink&quot; title=&quot;add方法&quot;&gt;&lt;/a&gt;add方法&lt;/h2&gt;&lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;add方法&quot;&gt;&lt;a href=&quot;#add方法&quot; class=&quot;headerlink&quot; title=&quot;add方法&quot;&gt;&lt;/a&gt;add方法&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
   public synchronized boolean add(E e) {
     modCount++;

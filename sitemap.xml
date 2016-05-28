@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://somefish475.github.io/2016/05/09/Vector/</loc>
+    
+    <lastmod>2016-05-28T11:36:37.690Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://somefish475.github.io/2016/05/08/ArrayList/</loc>
     
     <lastmod>2016-05-28T11:34:17.922Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://somefish475.github.io/2016/05/09/LinkedList/</loc>
     
     <lastmod>2016-05-28T11:34:00.464Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://somefish475.github.io/2016/05/09/Vector/</loc>
-    
-    <lastmod>2016-05-28T11:33:47.197Z</lastmod>
     
   </url>
   
