@@ -497,11 +497,10 @@ long j = 8;
     <link href="http://somefish475.github.io/2016/05/08/ArrayList/"/>
     <id>http://somefish475.github.io/2016/05/08/ArrayList/</id>
     <published>2016-05-08T06:14:15.510Z</published>
-    <updated>2016-05-28T11:39:41.124Z</updated>
+    <updated>2016-05-28T11:40:45.789Z</updated>
     
     <content type="html">&lt;hr&gt;
-&lt;p&gt;title:ArrayList原理以及实现&lt;/p&gt;
-&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;h2 id=&quot;在源码中是这样介绍的&quot;&gt;&lt;a href=&quot;#在源码中是这样介绍的&quot; class=&quot;headerlink&quot; title=&quot;在源码中是这样介绍的&quot;&gt;&lt;/a&gt;在源码中是这样介绍的&lt;/h2&gt;&lt;blockquote&gt;
+&lt;h2 id=&quot;title-ArrayList原理以及实现&quot;&gt;&lt;a href=&quot;#title-ArrayList原理以及实现&quot; class=&quot;headerlink&quot; title=&quot;title:ArrayList原理以及实现&quot;&gt;&lt;/a&gt;title:ArrayList原理以及实现&lt;/h2&gt;&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;h2 id=&quot;在源码中是这样介绍的&quot;&gt;&lt;a href=&quot;#在源码中是这样介绍的&quot; class=&quot;headerlink&quot; title=&quot;在源码中是这样介绍的&quot;&gt;&lt;/a&gt;在源码中是这样介绍的&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;Resizable-array implementation of the &lt;tt&gt;List&lt;/tt&gt; interface.  Implements all optional list operations, and permits all elements, including &lt;tt&gt;null&lt;/tt&gt;.  In addition to implementing the &lt;tt&gt;List&lt;/tt&gt; interface, this class provides methods to manipulate the size of the array that is used internally to store the list.  (This class is roughly equivalent to &lt;tt&gt;Vector&lt;/tt&gt;, except that it is unsynchronized.)&lt;/p&gt;
 &lt;p&gt;大致的意思是说实现了List接口，允许null值，允许重复值,是非同步的。大体上和Vector相似&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -612,8 +611,7 @@ private void rangeCheck(int index) {
     <summary type="html">
     
       &lt;hr&gt;
-&lt;p&gt;title:ArrayList原理以及实现&lt;/p&gt;
-&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;h2 id=&quot;在源码中是这样介绍的&quot;&gt;&lt;a href=&quot;#在源码中是这样介绍
+&lt;h2 id=&quot;title-ArrayList原理以及实现&quot;&gt;&lt;a href=&quot;#title-ArrayList原理以及实现&quot; class=&quot;headerlink&quot; title=&quot;title:ArrayList原理以及实现&quot;&gt;&lt;/a&gt;title:ArrayList原理以
     
     </summary>
     
