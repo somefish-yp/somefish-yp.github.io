@@ -82,7 +82,7 @@
 
 
 
-<meta name="description" content="Stack值栈概述值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。只说说本类扩展的方法，至于继承而来的方法就不说了。
+<meta name="description" content="概述值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。只说说本类扩展的方法，至于继承而来的方法就不说了。
 push方法 public E push(E item) {
     addElement(item);
 
@@ -90,12 +90,12 @@ push方法 public E push(E item) {
 }
 
 public synchronized void addElement(E obj) {
-    mod">
+    modCount++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SomeFish">
+<meta property="og:title" content="Stack值栈">
 <meta property="og:url" content="http://somefish475.github.io/2016/05/11/Stack/index.html">
 <meta property="og:site_name" content="SomeFish">
-<meta property="og:description" content="Stack值栈概述值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。只说说本类扩展的方法，至于继承而来的方法就不说了。
+<meta property="og:description" content="概述值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。只说说本类扩展的方法，至于继承而来的方法就不说了。
 push方法 public E push(E item) {
     addElement(item);
 
@@ -103,11 +103,11 @@ push方法 public E push(E item) {
 }
 
 public synchronized void addElement(E obj) {
-    mod">
-<meta property="og:updated_time" content="2016-05-28T11:33:33.503Z">
+    modCount++">
+<meta property="og:updated_time" content="2016-05-28T12:02:28.801Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SomeFish">
-<meta name="twitter:description" content="Stack值栈概述值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。只说说本类扩展的方法，至于继承而来的方法就不说了。
+<meta name="twitter:title" content="Stack值栈">
+<meta name="twitter:description" content="概述值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。只说说本类扩展的方法，至于继承而来的方法就不说了。
 push方法 public E push(E item) {
     addElement(item);
 
@@ -115,7 +115,7 @@ push方法 public E push(E item) {
 }
 
 public synchronized void addElement(E obj) {
-    mod">
+    modCount++">
 
 
 
@@ -133,7 +133,7 @@ public synchronized void addElement(E obj) {
   };
 </script>
 
-  <title>  | SomeFish </title>
+  <title> Stack值栈 | SomeFish </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +273,7 @@ public synchronized void addElement(E obj) {
             
             
               
-                
+                Stack值栈
               
             
           </h1>
@@ -313,7 +313,7 @@ public synchronized void addElement(E obj) {
       
 
       
-        <h2 id="Stack值栈"><a href="#Stack值栈" class="headerlink" title="Stack值栈"></a>Stack值栈</h2><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。<br>只说说本类扩展的方法，至于继承而来的方法就不说了。</p>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。<br>只说说本类扩展的方法，至于继承而来的方法就不说了。</p>
 <h2 id="push方法"><a href="#push方法" class="headerlink" title="push方法"></a>push方法</h2><pre><code> public E push(E item) {
     addElement(item);
 
@@ -418,16 +418,16 @@ public synchronized E peek() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/11/HashMap/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2016/05/11/HashMap/" rel="next" title="HashMap原理分析">
+                <i class="fa fa-chevron-left"></i> HashMap原理分析
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/05/18/Queue/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/05/18/Queue/" rel="prev" title="Queue原理分析">
+                Queue原理分析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -555,7 +555,7 @@ public synchronized E peek() {
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Stack值栈"><span class="nav-number">1.</span> <span class="nav-text">Stack值栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#push方法"><span class="nav-number">3.</span> <span class="nav-text">push方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pop方法"><span class="nav-number">4.</span> <span class="nav-text">pop方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#peek方法"><span class="nav-number">5.</span> <span class="nav-text">peek方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#search-Object-o-方法"><span class="nav-number">6.</span> <span class="nav-text">search(Object o)方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#empty-方法"><span class="nav-number">7.</span> <span class="nav-text">empty()方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#push方法"><span class="nav-number">2.</span> <span class="nav-text">push方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pop方法"><span class="nav-number">3.</span> <span class="nav-text">pop方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#peek方法"><span class="nav-number">4.</span> <span class="nav-text">peek方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#search-Object-o-方法"><span class="nav-number">5.</span> <span class="nav-text">search(Object o)方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#empty-方法"><span class="nav-number">6.</span> <span class="nav-text">empty()方法</span></a></li></ol></div>
             
           </div>
         </section>

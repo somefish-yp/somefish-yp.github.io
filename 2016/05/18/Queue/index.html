@@ -82,40 +82,40 @@
 
 
 
-<meta name="description" content="title: Queue原理分析
-public interface Queue&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt;
+<meta name="description" content="public interface Queue&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt;
 
 通过看Queue的签名可以直观的看到，Queue是一个接口，继承于Collection。Queue提供了以下几个方法
 
 boolean add(E e);  
 boolean offer(E e);    
 E remove();  
-E p">
+E poll();  
+E element">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SomeFish">
+<meta property="og:title" content="Queue原理分析">
 <meta property="og:url" content="http://somefish475.github.io/2016/05/18/Queue/index.html">
 <meta property="og:site_name" content="SomeFish">
-<meta property="og:description" content="title: Queue原理分析
-public interface Queue&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt;
+<meta property="og:description" content="public interface Queue&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt;
 
 通过看Queue的签名可以直观的看到，Queue是一个接口，继承于Collection。Queue提供了以下几个方法
 
 boolean add(E e);  
 boolean offer(E e);    
 E remove();  
-E p">
-<meta property="og:updated_time" content="2016-05-28T12:00:11.046Z">
+E poll();  
+E element">
+<meta property="og:updated_time" content="2016-05-28T12:01:53.131Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SomeFish">
-<meta name="twitter:description" content="title: Queue原理分析
-public interface Queue&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt;
+<meta name="twitter:title" content="Queue原理分析">
+<meta name="twitter:description" content="public interface Queue&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt;
 
 通过看Queue的签名可以直观的看到，Queue是一个接口，继承于Collection。Queue提供了以下几个方法
 
 boolean add(E e);  
 boolean offer(E e);    
 E remove();  
-E p">
+E poll();  
+E element">
 
 
 
@@ -133,7 +133,7 @@ E p">
   };
 </script>
 
-  <title>  | SomeFish </title>
+  <title> Queue原理分析 | SomeFish </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +273,7 @@ E p">
             
             
               
-                
+                Queue原理分析
               
             
           </h1>
@@ -313,9 +313,7 @@ E p">
       
 
       
-        <hr>
-<p>title: Queue原理分析</p>
-<pre><code>public interface Queue&lt;E&gt; extends Collection&lt;E&gt;
+        <pre><code>public interface Queue&lt;E&gt; extends Collection&lt;E&gt;
 </code></pre><blockquote>
 <p>通过看Queue的签名可以直观的看到，Queue是一个接口，继承于Collection。<br>Queue提供了以下几个方法</p>
 </blockquote>
@@ -391,8 +389,8 @@ E peek();
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/11/Stack/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2016/05/11/Stack/" rel="next" title="Stack值栈">
+                <i class="fa fa-chevron-left"></i> Stack值栈
               </a>
             
           </div>
