@@ -82,46 +82,15 @@
 
 
 
-<meta name="description" content="是在importNew上看到的，问题来源于StackOverFlow。一直都记着。一直以为
-i+=j就是简单的
-i=i+j直到看到了他人的智慧。
-
-如果这么做int i = 10;
-long j = 8;
-
-使用i+=j的时候是没问题的，但是如果是i=i+j的话会报错-&amp;gt;Type mismatch: cannot convert from long to int
-
-纠正的方法有两种：
-1.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="有趣的操作符号："+="">
-<meta property="og:url" content="http://somefish475.github.io/2016/05/09/有趣的操作符号+/index.html">
+<meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SomeFish">
+<meta property="og:url" content="http://somefish475.github.io/categories/编程/index.html">
 <meta property="og:site_name" content="SomeFish">
-<meta property="og:description" content="是在importNew上看到的，问题来源于StackOverFlow。一直都记着。一直以为
-i+=j就是简单的
-i=i+j直到看到了他人的智慧。
-
-如果这么做int i = 10;
-long j = 8;
-
-使用i+=j的时候是没问题的，但是如果是i=i+j的话会报错-&amp;gt;Type mismatch: cannot convert from long to int
-
-纠正的方法有两种：
-1.">
-<meta property="og:updated_time" content="2016-05-28T12:02:43.688Z">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="有趣的操作符号："+="">
-<meta name="twitter:description" content="是在importNew上看到的，问题来源于StackOverFlow。一直都记着。一直以为
-i+=j就是简单的
-i=i+j直到看到了他人的智慧。
-
-如果这么做int i = 10;
-long j = 8;
-
-使用i+=j的时候是没问题的，但是如果是i=i+j的话会报错-&amp;gt;Type mismatch: cannot convert from long to int
-
-纠正的方法有两种：
-1.">
+<meta name="twitter:title" content="SomeFish">
+<meta name="twitter:description">
 
 
 
@@ -139,7 +108,7 @@ long j = 8;
   };
 </script>
 
-  <title> 有趣的操作符号："+=" | SomeFish </title>
+  <title> 分类: 编程 | SomeFish </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -160,7 +129,7 @@ long j = 8;
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -258,132 +227,47 @@ long j = 8;
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <section id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        编程
+        <small>分类</small>
+      </h2>
+    </div>
 
     
-      <header class="post-header">
+      
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
+            <a class="post-title-link" href="/2016/05/18/Queue/" itemprop="url">
               
-                有趣的操作符号："+="
+                <span itemprop="name">Queue原理分析</span>
               
-            
-          </h1>
+            </a>
         
+      </h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-09T21:58:52+08:00" content="2016-05-09">
-              2016-05-09
-            </time>
-          </span>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-05-18T21:46:39+08:00"
+              content="2016-05-18" >
+          05-18
+        </time>
+      </div>
 
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <blockquote>
-<p>是在importNew上看到的，问题来源于StackOverFlow。一直都记着。<br>一直以为</p>
-<p><font face="黑体" size="5">i+=j</font><br>就是简单的</p>
-<p><font face="黑体" size="5">i=i+j</font><br>直到看到了他人的智慧。</p>
-</blockquote>
-<h2 id="如果这么做"><a href="#如果这么做" class="headerlink" title="如果这么做"></a>如果这么做</h2><pre><code>int i = 10;
-long j = 8;
-
-使用i+=j的时候是没问题的，但是如果是i=i+j的话会报错-&gt;Type mismatch: cannot convert from long to int
-
-纠正的方法有两种：
-1.使变量i成为long类型
-2.将i=i+j换成i=(int)(i+j)
-
-这意味着i+=j其实是i=(Type of i)(i + j)
-</code></pre>
-      
-    </div>
-    
-    <div>
-      
-        
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/05/08/ArrayList/" rel="next" title="ArrayList原理以及实现">
-                <i class="fa fa-chevron-left"></i> ArrayList原理以及实现
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/09/LinkedList/" rel="prev" title="理解LinkedList">
-                理解LinkedList <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+
 
 
           </div>
@@ -391,10 +275,6 @@ long j = 8;
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -414,17 +294,8 @@ long j = 8;
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -494,17 +365,6 @@ long j = 8;
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如果这么做"><span class="nav-number">1.</span> <span class="nav-text">如果这么做</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -601,10 +461,6 @@ long j = 8;
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
