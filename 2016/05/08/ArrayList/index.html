@@ -82,19 +82,26 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="ArrayList原理以及实现概述在源码中是这样介绍的
+Resizable-array implementation of the List interface.  Implements all optional list operations, and permits all elements, including null.  In addition to implementing the">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://somefish475.github.io/2016/05/02/hello-world/index.html">
+<meta property="og:title" content="SomeFish">
+<meta property="og:url" content="http://somefish475.github.io/2016/05/08/ArrayList/index.html">
 <meta property="og:site_name" content="SomeFish">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-05-02T02:41:46.120Z">
+<meta property="og:description" content="ArrayList原理以及实现概述在源码中是这样介绍的
+Resizable-array implementation of the List interface.  Implements all optional list operations, and permits all elements, including null.  In addition to implementing the">
+<meta property="og:image" content="http://somefish475.github.io/arrayList/addFromArrayList1.png">
+<meta property="og:image" content="http://somefish475.github.io/arrayList/addFromArrayList2.png">
+<meta property="og:image" content="http://somefish475.github.io/arrayList/addFromArrayList3.png">
+<meta property="og:image" content="http://somefish475.github.io/arrayList/remoceFromArrayList1.png">
+<meta property="og:image" content="http://somefish475.github.io/arrayList/arrayListSize1.png">
+<meta property="og:image" content="http://somefish475.github.io/arrayList/arrayListSize2.png">
+<meta property="og:updated_time" content="2016-05-11T02:21:10.156Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="SomeFish">
+<meta name="twitter:description" content="ArrayList原理以及实现概述在源码中是这样介绍的
+Resizable-array implementation of the List interface.  Implements all optional list operations, and permits all elements, including null.  In addition to implementing the">
+<meta name="twitter:image" content="http://somefish475.github.io/arrayList/addFromArrayList1.png">
 
 
 
@@ -112,7 +119,7 @@ Quick">
   };
 </script>
 
-  <title> Hello World | SomeFish </title>
+  <title>  | SomeFish </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +259,7 @@ Quick">
             
             
               
-                Hello World
+                
               
             
           </h1>
@@ -264,8 +271,8 @@ Quick">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-02T10:41:46+08:00" content="2016-05-02">
-              2016-05-02
+            <time itemprop="dateCreated" datetime="2016-05-08T14:14:15+08:00" content="2016-05-08">
+              2016-05-08
             </time>
           </span>
 
@@ -292,15 +299,111 @@ Quick">
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <hr>
+<h2 id="ArrayList原理以及实现"><a href="#ArrayList原理以及实现" class="headerlink" title="ArrayList原理以及实现"></a>ArrayList原理以及实现</h2><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="在源码中是这样介绍的"><a href="#在源码中是这样介绍的" class="headerlink" title="在源码中是这样介绍的"></a>在源码中是这样介绍的</h2><blockquote>
+<p>Resizable-array implementation of the <tt>List</tt> interface.  Implements all optional list operations, and permits all elements, including <tt>null</tt>.  In addition to implementing the <tt>List</tt> interface, this class provides methods to manipulate the size of the array that is used internally to store the list.  (This class is roughly equivalent to <tt>Vector</tt>, except that it is unsynchronized.)</p>
+<p>大致的意思是说实现了List接口，允许null值，允许重复值,是非同步的。大体上和Vector相似</p>
+</blockquote>
+<p>ArrayList是相对来说比较简单的一种数据结构，最重要的是可以动态的调整容量的大小，可以认为是我们常说的“动态数组”。</p>
+<pre><code>ArrayList&lt;String&gt; arrayList = new ArrayList&lt;String&gt;();
+    arrayList.add(&quot;第一节：java&quot;);
+    arrayList.add(&quot;第二节：C#&quot;);
+    arrayList.add(&quot;第三节：C++&quot;);
+    arrayList.remove(0);
+</code></pre><p><img src="/arrayList/addFromArrayList1.png" alt="addFromArrayList1"><br><img src="/arrayList/addFromArrayList2.png" alt="addFromArrayList1"><br><img src="/arrayList/addFromArrayList3.png" alt="addFromArrayList1"><br><img src="/arrayList/remoceFromArrayList1.png" alt="addFromArrayList1"></p>
+<blockquote>
+<p>在Debug模式下可以看到,数组初始化容量大小为10.<br>执行add方法添加成员后成员按顺序进入数组。<br>执行remove方法，删除排在前面的成员后，后面的成员向前排一个位置。<br>虽然没有写出删除排在中间的成员的情况，但是不难想象，在此成员前面的成员保持不变，在此成员后面的成员向前排一个位置。  </p>
+</blockquote>
+<p>##add方法</p>
+<pre><code>public boolean add(E e) {  
+    ensureCapacityInternal(size + 1);  // Increments modCount!!
+    elementData[size++] = e;
+    return true;
+}
+</code></pre><blockquote>
+<p>可以看到自动扩容的重点就在ensureCapacityInternal(int minCapacity)方法中</p>
+</blockquote>
+<p>来看一下其中的源码</p>
+<pre><code>private static final int DEFAULT_CAPACITY = 10;
+private static final Object[] EMPTY_ELEMENTDATA = {};
+private transient Object[] elementData;    //当前数组
+
+
+ private void ensureCapacityInternal(int minCapacity) {
+    if (elementData == EMPTY_ELEMENTDATA) {
+        minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);
+    }
+
+    ensureExplicitCapacity(minCapacity);
+}
+
+private void ensureExplicitCapacity(int minCapacity) {
+    modCount++;
+
+    // overflow-conscious code
+    if (minCapacity - elementData.length &gt; 0)
+        grow(minCapacity);
+}
+
+private void grow(int minCapacity) {
+    // overflow-conscious code
+    int oldCapacity = elementData.length;
+    int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);
+    if (newCapacity - minCapacity &lt; 0)
+        newCapacity = minCapacity;
+    if (newCapacity - MAX_ARRAY_SIZE &gt; 0)
+        newCapacity = hugeCapacity(minCapacity);
+    // minCapacity is usually close to size, so this is a win:
+    elementData = Arrays.copyOf(elementData, newCapacity);
+}
+</code></pre><blockquote>
+<p>可以从<br>if (minCapacity - elementData.length &gt; 0)<br>grow(minCapacity);<br>看出当增加数据的时候，如果数组容量大小不够的时候，会通过grow(int minCapacity)方法增长0.5倍,然后将原来的数组成员通过Arrays.copyOf(elementData, newCapacity)方法复制到新的数组中。<br>例如，数组默认容量大小是10，当增加第11个数组成员的时候，数组容量会增长为15。具体情况如图所示：<br><img src="/arrayList/arrayListSize1.png" alt="addFromArrayList1"><br><img src="/arrayList/arrayListSize2.png" alt="addFromArrayList1"></p>
+</blockquote>
+<p>##set方法</p>
+<pre><code>public E set(int index, E element) {
+    rangeCheck(index);
+
+    E oldValue = elementData(index);
+    elementData[index] = element;
+    return oldValue;
+}
+
+private void rangeCheck(int index) {
+    if (index &gt;= size)
+        throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+}
+</code></pre><blockquote>
+<p>先做index检查，当参数大小大于等于数组容量大小的时候会抛出一个异常<br>IndexOutOfBoundsException(outOfBoundsMsg(index));</p>
+</blockquote>
+<p>##get方法<br>    public E get(int index) {<br>        rangeCheck(index);</p>
+<pre><code>    return elementData(index);
+}
+</code></pre><blockquote>
+<p>依然是先做index检查,然后就是返回索引位置的成员</p>
+</blockquote>
+<p>##remove方法<br>    public E remove(int index) {<br>        rangeCheck(index);</p>
+<pre><code>    modCount++;
+    E oldValue = elementData(index);
+
+    int numMoved = size - index - 1;
+    if (numMoved &gt; 0)
+        System.arraycopy(elementData, index+1, elementData, index,
+                         numMoved);//后面的成员向前移
+    elementData[--size] = null; // clear to let GC do its work
+    //最后一个成员变成null
+    return oldValue;
+}
+</code></pre><blockquote>
+<p>依然是做index检查，然后通过System.arraycopy()方法复制得到了一个新的数组,最后把最后一个成员设置成null。<br>源码注释已经表达的很清楚了：<br>Removes the element at the specified position in this list.<br>Shifts any subsequent elements to the left (subtracts one from their indices)</p>
+</blockquote>
+<font color="red"><br>使用ArrayList进行插入和删除操作效率不会太高<br></font>
+
+
+
+
+
+
+
 
       
     </div>
@@ -324,12 +427,16 @@ Quick">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/05/02/test/" rel="next" title="hello-test">
+                <i class="fa fa-chevron-left"></i> hello-test
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/05/02/test/" rel="prev" title="hello-test">
-                hello-test <i class="fa fa-chevron-right"></i>
+              <a href="/2016/05/09/有趣的操作符号+/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -457,7 +564,7 @@ Quick">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList原理以及实现"><span class="nav-number">1.</span> <span class="nav-text">ArrayList原理以及实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number"></span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在源码中是这样介绍的"><span class="nav-number">1.</span> <span class="nav-text">在源码中是这样介绍的</span></a></li></ol></div>
             
           </div>
         </section>

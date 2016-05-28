@@ -251,6 +251,1129 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/18/Queue/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-18T21:46:39+08:00" content="2016-05-18">
+              2016-05-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="Queue原理分析"><a href="#Queue原理分析" class="headerlink" title="Queue原理分析"></a>Queue原理分析</h2><pre><code>public interface Queue&lt;E&gt; extends Collection&lt;E&gt;
+</code></pre><blockquote>
+<p>通过看Queue的签名可以直观的看到，Queue是一个接口，继承于Collection。<br>Queue提供了以下几个方法</p>
+</blockquote>
+<pre><code>boolean add(E e);  
+boolean offer(E e);    
+E remove();  
+E poll();  
+E element();  
+E peek();
+</code></pre><p>&gt;</p>
+<blockquote>
+<p>队列是一种特殊的线性表，实现了该接口的有LinkedList。<br>与单向链表不同，队列是FIFO(first-in-first-out),先进先出。</p>
+</blockquote>
+<pre><code>Queue&lt;String&gt; que = new LinkedList&lt;String&gt;();
+    que.offer(&quot;d&quot;);
+    que.offer(&quot;a&quot;);
+    que.offer(&quot;r&quot;);
+    que.offer(&quot;g&quot;);
+    que.offer(&quot;o&quot;);
+    que.offer(&quot;t&quot;);
+    System.out.print(&quot;正常输出：&quot;);
+    for(String str : que){
+        System.out.print(str);
+    }
+    System.out.println();
+
+    System.out.print(&quot;poll:&quot;);
+    que.poll();//得到第一个元素并删除第一个元素
+    for(String str : que){
+        System.out.print(str);
+    }
+    System.out.println();
+
+    System.out.print(&quot;peek:&quot;);
+    que.peek();//得到第一个元素
+    for(String str : que){
+        System.out.print(str);
+    }
+    System.out.println();
+
+    System.out.print(&quot;element:&quot;);
+    que.element();//得到第一个元素
+    for(String str : que){
+        System.out.print(str);
+    }
+
+    正常输出：dargot
+    poll:argot
+    peek:argot
+    element:argot
+</code></pre><blockquote>
+<p>可以看到字母d先进入，然后也是先输出字母d。  </p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/11/Stack/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-11T22:19:24+08:00" content="2016-05-11">
+              2016-05-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="Stack值栈"><a href="#Stack值栈" class="headerlink" title="Stack值栈"></a>Stack值栈</h2><p>##概述<br>值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。<br>只说说本类扩展的方法，至于继承而来的方法就不说了。</p>
+<p>##push方法<br>     public E push(E item) {<br>        addElement(item);</p>
+<pre><code>    return item;
+}
+
+public synchronized void addElement(E obj) {
+    modCount++;
+    ensureCapacityHelper(elementCount + 1);
+    elementData[elementCount++] = obj;
+}
+</code></pre><blockquote>
+<p>进入push(E item)调用的是Vector类中的addElement(E obj)方法。再深入的方法我就不贴出来了，可以去看看Vector类。  </p>
+</blockquote>
+<p>##pop方法</p>
+<pre><code>public synchronized E pop() {
+    E       obj;
+    int     len = size();
+
+    obj = peek();
+    removeElementAt(len - 1);
+
+    return obj;
+}
+
+public synchronized E peek() {
+    int     len = size();
+
+    if (len == 0)
+        throw new EmptyStackException();
+    return elementAt(len - 1);
+}
+</code></pre><blockquote>
+<p>进入pop()方法调用的也是Vector类中的方法removeElementAt(int index)方法。<br>而size()方法是Vector中一个返回容量成员大小的方法，接下来又调用了本类扩展的peek()方法，该方法返回的是末尾成员。<br>可以看到，pop()方法是获取了末尾成员后删除末尾成员。</p>
+</blockquote>
+<p>##peek方法</p>
+<pre><code>public synchronized E peek() {
+    int     len = size();
+
+    if (len == 0)
+        throw new EmptyStackException();
+    return elementAt(len - 1);
+}
+</code></pre><blockquote>
+<p>很直观的可以看到，该方法是返回末尾成员。</p>
+</blockquote>
+<p>##search(Object o)方法</p>
+<pre><code>public synchronized int search(Object o) {
+    int i = lastIndexOf(o);
+
+    if (i &gt;= 0) {
+        return size() - i;
+    }
+    return -1;
+}
+
+ public synchronized int lastIndexOf(Object o) {
+    return lastIndexOf(o, elementCount-1);
+}
+
+ public synchronized int lastIndexOf(Object o, int index) {
+    if (index &gt;= elementCount)
+        throw new IndexOutOfBoundsException(index + &quot; &gt;= &quot;+ elementCount);
+
+    if (o == null) {
+        for (int i = index; i &gt;= 0; i--)
+            if (elementData[i]==null)
+                return i;
+    } else {
+        for (int i = index; i &gt;= 0; i--)
+            if (o.equals(elementData[i]))
+                return i;
+    }
+    return -1;
+}
+</code></pre><blockquote>
+<p>这个方法是查询成员所在的位置<br>该方法调用了Vector中的lastIndexOf(Object o)方法，然后又进入了lastIndexOf(Object o ,int index)方法。<br>可以看到，查找成员从末尾开始找，也就是从栈顶，因为值栈是先进后出的。</p>
+</blockquote>
+<p>##empty()方法</p>
+<pre><code> public boolean empty() {
+    return size() == 0;
+}
+</code></pre><blockquote>
+<p>可以看出这个方法是将值栈内的成员清空。</p>
+</blockquote>
+<font color="red"><br>由于值栈是继承与Vector，所以Stack中除了清空成员其他的操作都是同步的。<br></font>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/11/HashMap/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-11T22:13:38+08:00" content="2016-05-11">
+              2016-05-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/09/Vector/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-09T22:49:20+08:00" content="2016-05-09">
+              2016-05-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="理解Vector"><a href="#理解Vector" class="headerlink" title="理解Vector"></a>理解Vector</h2><p>##概述</p>
+<blockquote>
+<p>Vector也是比较简单的数据结构。<br>可重复,允许null的集合<br>初始化容量大小为10<br>两倍容量大小自动扩容<br>可用Iterator进行遍历</p>
+<p>##add方法</p>
+</blockquote>
+<pre><code>private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+
+  public synchronized boolean add(E e) {
+    modCount++;
+    ensureCapacityHelper(elementCount + 1);
+    elementData[elementCount++] = e;
+    return true;
+}
+
+private void ensureCapacityHelper(int minCapacity) {
+    // overflow-conscious code
+    if (minCapacity - elementData.length &gt; 0)
+        grow(minCapacity);
+}
+
+private void grow(int minCapacity) {
+    // overflow-conscious code
+    int oldCapacity = elementData.length;
+    int newCapacity = oldCapacity + ((capacityIncrement &gt; 0) ?
+                                     capacityIncrement : oldCapacity);
+    if (newCapacity - minCapacity &lt; 0)
+        newCapacity = minCapacity;
+    if (newCapacity - MAX_ARRAY_SIZE &gt; 0)
+        newCapacity = hugeCapacity(minCapacity);
+    elementData = Arrays.copyOf(elementData, newCapacity);
+}
+
+private static int hugeCapacity(int minCapacity) {
+    if (minCapacity &lt; 0) // overflow
+        throw new OutOfMemoryError();
+    return (minCapacity &gt; MAX_ARRAY_SIZE) ?
+        Integer.MAX_VALUE :
+        MAX_ARRAY_SIZE;
+}
+</code></pre><blockquote>
+<p>进入add方法后又调用了ensureCapacityHelper方法,进行index检查,如果Vector容量大小不够时，通过grow方法进行扩容.<br>capacityIncrement初始化为0,容量大小初始化为10，可以看到当capacityIncrement&gt;0的时候扩容的大小为capacityIncrement，否则扩容为原来的两倍大小。<br>也就是说Vector扩容后为原来容量大小的两倍<br>可以看看以下例子</p>
+</blockquote>
+<pre><code> List vector = new Vector();
+vector.add(null);
+vector.add(&quot;java&quot;);
+vector.add(&quot;c&quot;);
+vector.add(&quot;c++&quot;);
+vector.add(&quot;java&quot;);
+vector.add(&quot;c#&quot;);
+vector.add(&quot;python&quot;);
+vector.add(&quot;r&quot;);
+vector.add(&quot;ruby&quot;);
+vector.add(&quot;javascript&quot;);
+vector.add(&quot;json&quot;);
+vector.add(&quot;css&quot;);
+</code></pre><blockquote>
+<p><img src="/Vector/sizeFromVector1.png" alt="sizeFromVector1"><br>达到容量大小后，再添加一个成员元素后<br><img src="/Vector/sizeFromVector2.png" alt="sizeFromVector2"></p>
+<p>##set方法<br>     public synchronized E set(int index, E element) {<br>        if (index &gt;= elementCount)<br>            throw new ArrayIndexOutOfBoundsException(index);</p>
+</blockquote>
+<pre><code>    E oldValue = elementData(index);
+    elementData[index] = element;
+    return oldValue;
+}
+</code></pre><blockquote>
+<p>进入方法后，进行index检查，然后通过索引值获取相应的元素。</p>
+</blockquote>
+<p>##get方法<br>    public synchronized E get(int index) {<br>        if (index &gt;= elementCount)<br>            throw new ArrayIndexOutOfBoundsException(index);</p>
+<pre><code>    return elementData(index);
+}
+</code></pre><blockquote>
+<p>get方法比较简单，首先是进行index检查，没问题就获得索引位置的元素。</p>
+</blockquote>
+<p>#remove方法<br>     public synchronized E remove(int index) {<br>        modCount++;<br>        if (index &gt;= elementCount)<br>            throw new ArrayIndexOutOfBoundsException(index);<br>        E oldValue = elementData(index);</p>
+<pre><code>    int numMoved = elementCount - index - 1;
+    if (numMoved &gt; 0)
+        System.arraycopy(elementData, index+1, elementData, index,
+                         numMoved);
+        //后面的元素向前移动
+    elementData[--elementCount] = null; // Let gc do its work
+    //最后一个元素进行null处理
+    return oldValue;
+}
+</code></pre><blockquote>
+<p>进入remove方法后依然是先进行index检查，然后将在被删元素后面的元素向前移，最后一个元素进行null处理，这一点与ArrayList的remove是一样的。<br>可以看看下图例子：<br><img src="/Vector/removeFromVector1.png" alt="removeFromVector1"><br>进行删除操作之后<br><img src="/Vector/removeFromVector2.png" alt="removeFromVector2">  </p>
+</blockquote>
+<font color="red"><br>可以看到Vector的增删改查方法都使用了synchronized进行修饰，也就是说Vector是线程安全的。<br></font>
+
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/09/LinkedList/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-09T22:32:25+08:00" content="2016-05-09">
+              2016-05-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="理解LinkedList"><a href="#理解LinkedList" class="headerlink" title="理解LinkedList"></a>理解LinkedList</h2><p>##概述</p>
+<blockquote>
+<p>实现了List接口，允许null，允许重复，非同步的。</p>
+</blockquote>
+<p>##add方法</p>
+<pre><code>public boolean add(E e) {
+    linkLast(e);
+    return true;
+}
+
+void linkLast(E e) {
+    final Node&lt;E&gt; l = last;
+    final Node&lt;E&gt; newNode = new Node&lt;&gt;(l, e, null);
+    last = newNode;
+    if (l == null)
+        //加入第一个成员的时候，使这个成员成为头成员(链表头部)
+        first = newNode;
+    else
+        //保存为上一成员的下一链接成员
+        l.next = newNode;
+    size++;
+    modCount++;
+}
+
+
+ private static class Node&lt;E&gt; {
+    E item;
+    Node&lt;E&gt; next;
+    Node&lt;E&gt; prev;
+
+    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) {
+        this.item = element;
+        this.next = next;
+        this.prev = prev;
+    }
+}
+</code></pre><blockquote>
+<p>进入add()方法后，首先调用了linkLast()方法，而linkLast()实例化了一个Node<e>的对象。<br>Node<e>是LinkedList类中的一个内部类，可以看到Node<e>类实现了双向链表的数据结构。</e></e></e></p>
+</blockquote>
+<p>##set方法</p>
+<pre><code>public E set(int index, E element) {
+    checkElementIndex(index);
+    Node&lt;E&gt; x = node(index);
+    E oldVal = x.item;
+    x.item = element;
+    return oldVal;
+}
+
+private void checkElementIndex(int index) {
+    if (!isElementIndex(index))
+        throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+}
+
+ private boolean isElementIndex(int index) {
+    return index &gt;= 0 &amp;&amp; index &lt; size;
+}
+
+Node&lt;E&gt; node(int index) {
+    // assert isElementIndex(index);
+
+    if (index &lt; (size &gt;&gt; 1)) {
+        //如果成员在集合前半段
+        Node&lt;E&gt; x = first;
+        for (int i = 0; i &lt; index; i++)
+            x = x.next;
+        return x;
+    } else {
+        //成员在集合后半段
+        Node&lt;E&gt; x = last;
+        for (int i = size - 1; i &gt; index; i--)
+            x = x.prev;
+        return x;
+    }
+}
+</code></pre><blockquote>
+<p>进入set()方法后首先进行index检查，如果索引值小于0或者超过集合容量大小则抛出异常。<br>然后通过Node<e>的node()方法先判断成员所在集合的大概位置，随后从一半的集合成员中从第一个成员进行遍历，访问到相应索引的成员就返回。<br>只遍历一半的成员，访问的复杂度为O(N/2)</e></p>
+</blockquote>
+<p>##get方法</p>
+<pre><code>public E get(int index) {
+    checkElementIndex(index);
+    return node(index).item;
+}
+</code></pre><blockquote>
+<p>进入get()方法后先进行index检查，然后通过node()方法返回对应索引值位置的成员。</p>
+</blockquote>
+<p>##remove方法</p>
+<pre><code>public E remove(int index) {
+    checkElementIndex(index);
+    return unlink(node(index));
+}
+
+E unlink(Node&lt;E&gt; x) {
+    // assert x != null;
+    final E element = x.item;
+    final Node&lt;E&gt; next = x.next;
+    final Node&lt;E&gt; prev = x.prev;
+
+    if (prev == null) {
+        first = next;
+        //如果没有父成员，则将链表头成员链接指向该成员的子成员
+    } else {
+        //如果有父成员，则将父成员的子成员链接指向该成员的子成员(也就是说该成员的子成员向前移动),而且该成员的父成员链接设置为null
+        prev.next = next;
+        x.prev = null;
+    }
+
+    if (next == null) {
+        //如果该成员没有子成员，则将链表的末尾成员指向该成员的父成员
+        last = prev;
+    } else {
+        //如果该成员有子成员，则将子成员的父成员链接指向该成员的父成员，并且该成员的子成员链接设置为null
+        next.prev = prev;
+        x.next = null;
+    }
+
+    x.item = null;
+    //设置该成员为null
+    size--;
+    modCount++;
+    return element;
+}
+</code></pre><blockquote>
+<p>进入remove()方法后，依然是先进行index检查，然后通过node()方法找到成员后对成员进行unlink()方法处理。  </p>
+</blockquote>
+<font color="red"><br>使用LinkedList进行插入和删除操作执行效率会较ArrayList高<br>但是如果需要大量的访问元素的话，ArrayList执行效率较LinkedList高。<br></font>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/09/有趣的操作符号+/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-09T21:58:52+08:00" content="2016-05-09">
+              2016-05-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="有趣的操作符号：”-”"><a href="#有趣的操作符号：”-”" class="headerlink" title="有趣的操作符号：”+=”"></a>有趣的操作符号：”+=”</h2><blockquote>
+<p>是在importNew上看到的，问题来源于StackOverFlow。一直都记着。<br>一直以为</p>
+<p><font face="黑体" size="5">i+=j</font><br>就是简单的</p>
+<p><font face="黑体" size="5">i=i+j</font><br>直到看到了他人的智慧。</p>
+</blockquote>
+<p>##如果这么做<br>    int i = 10;<br>    long j = 8;</p>
+<pre><code>使用i+=j的时候是没问题的，但是如果是i=i+j的话会报错-&gt;Type mismatch: cannot convert from long to int
+
+纠正的方法有两种：
+1.使变量i成为long类型
+2.将i=i+j换成i=(int)(i+j)
+
+这意味着i+=j其实是i=(Type of i)(i + j)
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/08/ArrayList/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-08T14:14:15+08:00" content="2016-05-08">
+              2016-05-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="ArrayList原理以及实现"><a href="#ArrayList原理以及实现" class="headerlink" title="ArrayList原理以及实现"></a>ArrayList原理以及实现</h2><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="在源码中是这样介绍的"><a href="#在源码中是这样介绍的" class="headerlink" title="在源码中是这样介绍的"></a>在源码中是这样介绍的</h2><blockquote>
+<p>Resizable-array implementation of the <tt>List</tt> interface.  Implements all optional list operations, and permits all elements, including <tt>null</tt>.  In addition to implementing the <tt>List</tt> interface, this class provides methods to manipulate the size of the array that is used internally to store the list.  (This class is roughly equivalent to <tt>Vector</tt>, except that it is unsynchronized.)</p>
+<p>大致的意思是说实现了List接口，允许null值，允许重复值,是非同步的。大体上和Vector相似</p>
+</blockquote>
+<p>ArrayList是相对来说比较简单的一种数据结构，最重要的是可以动态的调整容量的大小，可以认为是我们常说的“动态数组”。</p>
+<pre><code>ArrayList&lt;String&gt; arrayList = new ArrayList&lt;String&gt;();
+    arrayList.add(&quot;第一节：java&quot;);
+    arrayList.add(&quot;第二节：C#&quot;);
+    arrayList.add(&quot;第三节：C++&quot;);
+    arrayList.remove(0);
+</code></pre><p><img src="/arrayList/addFromArrayList1.png" alt="addFromArrayList1"><br><img src="/arrayList/addFromArrayList2.png" alt="addFromArrayList1"><br><img src="/arrayList/addFromArrayList3.png" alt="addFromArrayList1"><br><img src="/arrayList/remoceFromArrayList1.png" alt="addFromArrayList1"></p>
+<blockquote>
+<p>在Debug模式下可以看到,数组初始化容量大小为10.<br>执行add方法添加成员后成员按顺序进入数组。<br>执行remove方法，删除排在前面的成员后，后面的成员向前排一个位置。<br>虽然没有写出删除排在中间的成员的情况，但是不难想象，在此成员前面的成员保持不变，在此成员后面的成员向前排一个位置。  </p>
+</blockquote>
+<p>##add方法</p>
+<pre><code>public boolean add(E e) {  
+    ensureCapacityInternal(size + 1);  // Increments modCount!!
+    elementData[size++] = e;
+    return true;
+}
+</code></pre><blockquote>
+<p>可以看到自动扩容的重点就在ensureCapacityInternal(int minCapacity)方法中</p>
+</blockquote>
+<p>来看一下其中的源码</p>
+<pre><code>private static final int DEFAULT_CAPACITY = 10;
+private static final Object[] EMPTY_ELEMENTDATA = {};
+private transient Object[] elementData;    //当前数组
+
+
+ private void ensureCapacityInternal(int minCapacity) {
+    if (elementData == EMPTY_ELEMENTDATA) {
+        minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);
+    }
+
+    ensureExplicitCapacity(minCapacity);
+}
+
+private void ensureExplicitCapacity(int minCapacity) {
+    modCount++;
+
+    // overflow-conscious code
+    if (minCapacity - elementData.length &gt; 0)
+        grow(minCapacity);
+}
+
+private void grow(int minCapacity) {
+    // overflow-conscious code
+    int oldCapacity = elementData.length;
+    int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);
+    if (newCapacity - minCapacity &lt; 0)
+        newCapacity = minCapacity;
+    if (newCapacity - MAX_ARRAY_SIZE &gt; 0)
+        newCapacity = hugeCapacity(minCapacity);
+    // minCapacity is usually close to size, so this is a win:
+    elementData = Arrays.copyOf(elementData, newCapacity);
+}
+</code></pre><blockquote>
+<p>可以从<br>if (minCapacity - elementData.length &gt; 0)<br>grow(minCapacity);<br>看出当增加数据的时候，如果数组容量大小不够的时候，会通过grow(int minCapacity)方法增长0.5倍,然后将原来的数组成员通过Arrays.copyOf(elementData, newCapacity)方法复制到新的数组中。<br>例如，数组默认容量大小是10，当增加第11个数组成员的时候，数组容量会增长为15。具体情况如图所示：<br><img src="/arrayList/arrayListSize1.png" alt="addFromArrayList1"><br><img src="/arrayList/arrayListSize2.png" alt="addFromArrayList1"></p>
+</blockquote>
+<p>##set方法</p>
+<pre><code>public E set(int index, E element) {
+    rangeCheck(index);
+
+    E oldValue = elementData(index);
+    elementData[index] = element;
+    return oldValue;
+}
+
+private void rangeCheck(int index) {
+    if (index &gt;= size)
+        throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+}
+</code></pre><blockquote>
+<p>先做index检查，当参数大小大于等于数组容量大小的时候会抛出一个异常<br>IndexOutOfBoundsException(outOfBoundsMsg(index));</p>
+</blockquote>
+<p>##get方法<br>    public E get(int index) {<br>        rangeCheck(index);</p>
+<pre><code>    return elementData(index);
+}
+</code></pre><blockquote>
+<p>依然是先做index检查,然后就是返回索引位置的成员</p>
+</blockquote>
+<p>##remove方法<br>    public E remove(int index) {<br>        rangeCheck(index);</p>
+<pre><code>    modCount++;
+    E oldValue = elementData(index);
+
+    int numMoved = size - index - 1;
+    if (numMoved &gt; 0)
+        System.arraycopy(elementData, index+1, elementData, index,
+                         numMoved);//后面的成员向前移
+    elementData[--size] = null; // clear to let GC do its work
+    //最后一个成员变成null
+    return oldValue;
+}
+</code></pre><blockquote>
+<p>依然是做index检查，然后通过System.arraycopy()方法复制得到了一个新的数组,最后把最后一个成员设置成null。<br>源码注释已经表达的很清楚了：<br>Removes the element at the specified position in this list.<br>Shifts any subsequent elements to the left (subtracts one from their indices)</p>
+</blockquote>
+<font color="red"><br>使用ArrayList进行插入和删除操作效率不会太高<br></font>
+
+
+
+
+
+
+
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/02/test/" itemprop="url">
                   hello-test
                 </a>
@@ -467,7 +1590,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -500,20 +1623,11 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://twitter.com/tongchengqiu" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.zhihu.com/people/tongchengqiu" target="_blank" title="Zhihu">
+                <a href="https://www.instagram.com/some.fish/" target="_blank" title="Instagram">
                   
                     <i class="fa fa-globe"></i>
                   
-                  Zhihu
+                  Instagram
                 </a>
               </span>
             

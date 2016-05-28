@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://somefish475.github.io/"/>
-  <updated>2016-05-02T04:39:36.121Z</updated>
+  <updated>2016-05-18T14:12:57.336Z</updated>
   <id>http://somefish475.github.io/</id>
   
   <author>
@@ -14,6 +14,613 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://somefish475.github.io/2016/05/18/Queue/"/>
+    <id>http://somefish475.github.io/2016/05/18/Queue/</id>
+    <published>2016-05-18T13:46:39.807Z</published>
+    <updated>2016-05-18T14:12:57.336Z</updated>
+    
+    <content type="html">&lt;hr&gt;
+&lt;h2 id=&quot;Queue原理分析&quot;&gt;&lt;a href=&quot;#Queue原理分析&quot; class=&quot;headerlink&quot; title=&quot;Queue原理分析&quot;&gt;&lt;/a&gt;Queue原理分析&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;public interface Queue&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;通过看Queue的签名可以直观的看到，Queue是一个接口，继承于Collection。&lt;br&gt;Queue提供了以下几个方法&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;boolean add(E e);  
+boolean offer(E e);    
+E remove();  
+E poll();  
+E element();  
+E peek();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;队列是一种特殊的线性表，实现了该接口的有LinkedList。&lt;br&gt;与单向链表不同，队列是FIFO(first-in-first-out),先进先出。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;Queue&amp;lt;String&amp;gt; que = new LinkedList&amp;lt;String&amp;gt;();
+    que.offer(&amp;quot;d&amp;quot;);
+    que.offer(&amp;quot;a&amp;quot;);
+    que.offer(&amp;quot;r&amp;quot;);
+    que.offer(&amp;quot;g&amp;quot;);
+    que.offer(&amp;quot;o&amp;quot;);
+    que.offer(&amp;quot;t&amp;quot;);
+    System.out.print(&amp;quot;正常输出：&amp;quot;);
+    for(String str : que){
+        System.out.print(str);
+    }
+    System.out.println();
+
+    System.out.print(&amp;quot;poll:&amp;quot;);
+    que.poll();//得到第一个元素并删除第一个元素
+    for(String str : que){
+        System.out.print(str);
+    }
+    System.out.println();
+
+    System.out.print(&amp;quot;peek:&amp;quot;);
+    que.peek();//得到第一个元素
+    for(String str : que){
+        System.out.print(str);
+    }
+    System.out.println();
+
+    System.out.print(&amp;quot;element:&amp;quot;);
+    que.element();//得到第一个元素
+    for(String str : que){
+        System.out.print(str);
+    }
+
+    正常输出：dargot
+    poll:argot
+    peek:argot
+    element:argot
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;可以看到字母d先进入，然后也是先输出字母d。  &lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;Queue原理分析&quot;&gt;&lt;a href=&quot;#Queue原理分析&quot; class=&quot;headerlink&quot; title=&quot;Queue原理分析&quot;&gt;&lt;/a&gt;Queue原理分析&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;public interface Queue&amp;lt;E&amp;g
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://somefish475.github.io/2016/05/11/Stack/"/>
+    <id>http://somefish475.github.io/2016/05/11/Stack/</id>
+    <published>2016-05-11T14:19:24.286Z</published>
+    <updated>2016-05-11T15:03:47.071Z</updated>
+    
+    <content type="html">&lt;hr&gt;
+&lt;h2 id=&quot;Stack值栈&quot;&gt;&lt;a href=&quot;#Stack值栈&quot; class=&quot;headerlink&quot; title=&quot;Stack值栈&quot;&gt;&lt;/a&gt;Stack值栈&lt;/h2&gt;&lt;p&gt;##概述&lt;br&gt;值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。&lt;br&gt;只说说本类扩展的方法，至于继承而来的方法就不说了。&lt;/p&gt;
+&lt;p&gt;##push方法&lt;br&gt;     public E push(E item) {&lt;br&gt;        addElement(item);&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    return item;
+}
+
+public synchronized void addElement(E obj) {
+    modCount++;
+    ensureCapacityHelper(elementCount + 1);
+    elementData[elementCount++] = obj;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;进入push(E item)调用的是Vector类中的addElement(E obj)方法。再深入的方法我就不贴出来了，可以去看看Vector类。  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##pop方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public synchronized E pop() {
+    E       obj;
+    int     len = size();
+
+    obj = peek();
+    removeElementAt(len - 1);
+
+    return obj;
+}
+
+public synchronized E peek() {
+    int     len = size();
+
+    if (len == 0)
+        throw new EmptyStackException();
+    return elementAt(len - 1);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;进入pop()方法调用的也是Vector类中的方法removeElementAt(int index)方法。&lt;br&gt;而size()方法是Vector中一个返回容量成员大小的方法，接下来又调用了本类扩展的peek()方法，该方法返回的是末尾成员。&lt;br&gt;可以看到，pop()方法是获取了末尾成员后删除末尾成员。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##peek方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public synchronized E peek() {
+    int     len = size();
+
+    if (len == 0)
+        throw new EmptyStackException();
+    return elementAt(len - 1);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;很直观的可以看到，该方法是返回末尾成员。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##search(Object o)方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public synchronized int search(Object o) {
+    int i = lastIndexOf(o);
+
+    if (i &amp;gt;= 0) {
+        return size() - i;
+    }
+    return -1;
+}
+
+ public synchronized int lastIndexOf(Object o) {
+    return lastIndexOf(o, elementCount-1);
+}
+
+ public synchronized int lastIndexOf(Object o, int index) {
+    if (index &amp;gt;= elementCount)
+        throw new IndexOutOfBoundsException(index + &amp;quot; &amp;gt;= &amp;quot;+ elementCount);
+
+    if (o == null) {
+        for (int i = index; i &amp;gt;= 0; i--)
+            if (elementData[i]==null)
+                return i;
+    } else {
+        for (int i = index; i &amp;gt;= 0; i--)
+            if (o.equals(elementData[i]))
+                return i;
+    }
+    return -1;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;这个方法是查询成员所在的位置&lt;br&gt;该方法调用了Vector中的lastIndexOf(Object o)方法，然后又进入了lastIndexOf(Object o ,int index)方法。&lt;br&gt;可以看到，查找成员从末尾开始找，也就是从栈顶，因为值栈是先进后出的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##empty()方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; public boolean empty() {
+    return size() == 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;可以看出这个方法是将值栈内的成员清空。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;font color=&quot;red&quot;&gt;&lt;br&gt;由于值栈是继承与Vector，所以Stack中除了清空成员其他的操作都是同步的。&lt;br&gt;&lt;/font&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;Stack值栈&quot;&gt;&lt;a href=&quot;#Stack值栈&quot; class=&quot;headerlink&quot; title=&quot;Stack值栈&quot;&gt;&lt;/a&gt;Stack值栈&lt;/h2&gt;&lt;p&gt;##概述&lt;br&gt;值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://somefish475.github.io/2016/05/11/HashMap/"/>
+    <id>http://somefish475.github.io/2016/05/11/HashMap/</id>
+    <published>2016-05-11T14:13:38.399Z</published>
+    <updated>2016-05-11T14:13:38.399Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://somefish475.github.io/2016/05/09/Vector/"/>
+    <id>http://somefish475.github.io/2016/05/09/Vector/</id>
+    <published>2016-05-09T14:49:20.818Z</published>
+    <updated>2016-05-18T13:52:39.313Z</updated>
+    
+    <content type="html">&lt;hr&gt;
+&lt;h2 id=&quot;理解Vector&quot;&gt;&lt;a href=&quot;#理解Vector&quot; class=&quot;headerlink&quot; title=&quot;理解Vector&quot;&gt;&lt;/a&gt;理解Vector&lt;/h2&gt;&lt;p&gt;##概述&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Vector也是比较简单的数据结构。&lt;br&gt;可重复,允许null的集合&lt;br&gt;初始化容量大小为10&lt;br&gt;两倍容量大小自动扩容&lt;br&gt;可用Iterator进行遍历&lt;/p&gt;
+&lt;p&gt;##add方法&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+
+  public synchronized boolean add(E e) {
+    modCount++;
+    ensureCapacityHelper(elementCount + 1);
+    elementData[elementCount++] = e;
+    return true;
+}
+
+private void ensureCapacityHelper(int minCapacity) {
+    // overflow-conscious code
+    if (minCapacity - elementData.length &amp;gt; 0)
+        grow(minCapacity);
+}
+
+private void grow(int minCapacity) {
+    // overflow-conscious code
+    int oldCapacity = elementData.length;
+    int newCapacity = oldCapacity + ((capacityIncrement &amp;gt; 0) ?
+                                     capacityIncrement : oldCapacity);
+    if (newCapacity - minCapacity &amp;lt; 0)
+        newCapacity = minCapacity;
+    if (newCapacity - MAX_ARRAY_SIZE &amp;gt; 0)
+        newCapacity = hugeCapacity(minCapacity);
+    elementData = Arrays.copyOf(elementData, newCapacity);
+}
+
+private static int hugeCapacity(int minCapacity) {
+    if (minCapacity &amp;lt; 0) // overflow
+        throw new OutOfMemoryError();
+    return (minCapacity &amp;gt; MAX_ARRAY_SIZE) ?
+        Integer.MAX_VALUE :
+        MAX_ARRAY_SIZE;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;进入add方法后又调用了ensureCapacityHelper方法,进行index检查,如果Vector容量大小不够时，通过grow方法进行扩容.&lt;br&gt;capacityIncrement初始化为0,容量大小初始化为10，可以看到当capacityIncrement&amp;gt;0的时候扩容的大小为capacityIncrement，否则扩容为原来的两倍大小。&lt;br&gt;也就是说Vector扩容后为原来容量大小的两倍&lt;br&gt;可以看看以下例子&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt; List vector = new Vector();
+vector.add(null);
+vector.add(&amp;quot;java&amp;quot;);
+vector.add(&amp;quot;c&amp;quot;);
+vector.add(&amp;quot;c++&amp;quot;);
+vector.add(&amp;quot;java&amp;quot;);
+vector.add(&amp;quot;c#&amp;quot;);
+vector.add(&amp;quot;python&amp;quot;);
+vector.add(&amp;quot;r&amp;quot;);
+vector.add(&amp;quot;ruby&amp;quot;);
+vector.add(&amp;quot;javascript&amp;quot;);
+vector.add(&amp;quot;json&amp;quot;);
+vector.add(&amp;quot;css&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;/Vector/sizeFromVector1.png&quot; alt=&quot;sizeFromVector1&quot;&gt;&lt;br&gt;达到容量大小后，再添加一个成员元素后&lt;br&gt;&lt;img src=&quot;/Vector/sizeFromVector2.png&quot; alt=&quot;sizeFromVector2&quot;&gt;&lt;/p&gt;
+&lt;p&gt;##set方法&lt;br&gt;     public synchronized E set(int index, E element) {&lt;br&gt;        if (index &amp;gt;= elementCount)&lt;br&gt;            throw new ArrayIndexOutOfBoundsException(index);&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;    E oldValue = elementData(index);
+    elementData[index] = element;
+    return oldValue;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;进入方法后，进行index检查，然后通过索引值获取相应的元素。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##get方法&lt;br&gt;    public synchronized E get(int index) {&lt;br&gt;        if (index &amp;gt;= elementCount)&lt;br&gt;            throw new ArrayIndexOutOfBoundsException(index);&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    return elementData(index);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;get方法比较简单，首先是进行index检查，没问题就获得索引位置的元素。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;#remove方法&lt;br&gt;     public synchronized E remove(int index) {&lt;br&gt;        modCount++;&lt;br&gt;        if (index &amp;gt;= elementCount)&lt;br&gt;            throw new ArrayIndexOutOfBoundsException(index);&lt;br&gt;        E oldValue = elementData(index);&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    int numMoved = elementCount - index - 1;
+    if (numMoved &amp;gt; 0)
+        System.arraycopy(elementData, index+1, elementData, index,
+                         numMoved);
+        //后面的元素向前移动
+    elementData[--elementCount] = null; // Let gc do its work
+    //最后一个元素进行null处理
+    return oldValue;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;进入remove方法后依然是先进行index检查，然后将在被删元素后面的元素向前移，最后一个元素进行null处理，这一点与ArrayList的remove是一样的。&lt;br&gt;可以看看下图例子：&lt;br&gt;&lt;img src=&quot;/Vector/removeFromVector1.png&quot; alt=&quot;removeFromVector1&quot;&gt;&lt;br&gt;进行删除操作之后&lt;br&gt;&lt;img src=&quot;/Vector/removeFromVector2.png&quot; alt=&quot;removeFromVector2&quot;&gt;  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;font color=&quot;red&quot;&gt;&lt;br&gt;可以看到Vector的增删改查方法都使用了synchronized进行修饰，也就是说Vector是线程安全的。&lt;br&gt;&lt;/font&gt;
+
+</content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;理解Vector&quot;&gt;&lt;a href=&quot;#理解Vector&quot; class=&quot;headerlink&quot; title=&quot;理解Vector&quot;&gt;&lt;/a&gt;理解Vector&lt;/h2&gt;&lt;p&gt;##概述&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Vector也是比较简单的数据结
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://somefish475.github.io/2016/05/09/LinkedList/"/>
+    <id>http://somefish475.github.io/2016/05/09/LinkedList/</id>
+    <published>2016-05-09T14:32:25.581Z</published>
+    <updated>2016-05-18T13:52:08.113Z</updated>
+    
+    <content type="html">&lt;hr&gt;
+&lt;h2 id=&quot;理解LinkedList&quot;&gt;&lt;a href=&quot;#理解LinkedList&quot; class=&quot;headerlink&quot; title=&quot;理解LinkedList&quot;&gt;&lt;/a&gt;理解LinkedList&lt;/h2&gt;&lt;p&gt;##概述&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;实现了List接口，允许null，允许重复，非同步的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##add方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public boolean add(E e) {
+    linkLast(e);
+    return true;
+}
+
+void linkLast(E e) {
+    final Node&amp;lt;E&amp;gt; l = last;
+    final Node&amp;lt;E&amp;gt; newNode = new Node&amp;lt;&amp;gt;(l, e, null);
+    last = newNode;
+    if (l == null)
+        //加入第一个成员的时候，使这个成员成为头成员(链表头部)
+        first = newNode;
+    else
+        //保存为上一成员的下一链接成员
+        l.next = newNode;
+    size++;
+    modCount++;
+}
+
+
+ private static class Node&amp;lt;E&amp;gt; {
+    E item;
+    Node&amp;lt;E&amp;gt; next;
+    Node&amp;lt;E&amp;gt; prev;
+
+    Node(Node&amp;lt;E&amp;gt; prev, E element, Node&amp;lt;E&amp;gt; next) {
+        this.item = element;
+        this.next = next;
+        this.prev = prev;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;进入add()方法后，首先调用了linkLast()方法，而linkLast()实例化了一个Node&lt;e&gt;的对象。&lt;br&gt;Node&lt;e&gt;是LinkedList类中的一个内部类，可以看到Node&lt;e&gt;类实现了双向链表的数据结构。&lt;/e&gt;&lt;/e&gt;&lt;/e&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##set方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public E set(int index, E element) {
+    checkElementIndex(index);
+    Node&amp;lt;E&amp;gt; x = node(index);
+    E oldVal = x.item;
+    x.item = element;
+    return oldVal;
+}
+
+private void checkElementIndex(int index) {
+    if (!isElementIndex(index))
+        throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+}
+
+ private boolean isElementIndex(int index) {
+    return index &amp;gt;= 0 &amp;amp;&amp;amp; index &amp;lt; size;
+}
+
+Node&amp;lt;E&amp;gt; node(int index) {
+    // assert isElementIndex(index);
+
+    if (index &amp;lt; (size &amp;gt;&amp;gt; 1)) {
+        //如果成员在集合前半段
+        Node&amp;lt;E&amp;gt; x = first;
+        for (int i = 0; i &amp;lt; index; i++)
+            x = x.next;
+        return x;
+    } else {
+        //成员在集合后半段
+        Node&amp;lt;E&amp;gt; x = last;
+        for (int i = size - 1; i &amp;gt; index; i--)
+            x = x.prev;
+        return x;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;进入set()方法后首先进行index检查，如果索引值小于0或者超过集合容量大小则抛出异常。&lt;br&gt;然后通过Node&lt;e&gt;的node()方法先判断成员所在集合的大概位置，随后从一半的集合成员中从第一个成员进行遍历，访问到相应索引的成员就返回。&lt;br&gt;只遍历一半的成员，访问的复杂度为O(N/2)&lt;/e&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##get方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public E get(int index) {
+    checkElementIndex(index);
+    return node(index).item;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;进入get()方法后先进行index检查，然后通过node()方法返回对应索引值位置的成员。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##remove方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public E remove(int index) {
+    checkElementIndex(index);
+    return unlink(node(index));
+}
+
+E unlink(Node&amp;lt;E&amp;gt; x) {
+    // assert x != null;
+    final E element = x.item;
+    final Node&amp;lt;E&amp;gt; next = x.next;
+    final Node&amp;lt;E&amp;gt; prev = x.prev;
+
+    if (prev == null) {
+        first = next;
+        //如果没有父成员，则将链表头成员链接指向该成员的子成员
+    } else {
+        //如果有父成员，则将父成员的子成员链接指向该成员的子成员(也就是说该成员的子成员向前移动),而且该成员的父成员链接设置为null
+        prev.next = next;
+        x.prev = null;
+    }
+
+    if (next == null) {
+        //如果该成员没有子成员，则将链表的末尾成员指向该成员的父成员
+        last = prev;
+    } else {
+        //如果该成员有子成员，则将子成员的父成员链接指向该成员的父成员，并且该成员的子成员链接设置为null
+        next.prev = prev;
+        x.next = null;
+    }
+
+    x.item = null;
+    //设置该成员为null
+    size--;
+    modCount++;
+    return element;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;进入remove()方法后，依然是先进行index检查，然后通过node()方法找到成员后对成员进行unlink()方法处理。  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;font color=&quot;red&quot;&gt;&lt;br&gt;使用LinkedList进行插入和删除操作执行效率会较ArrayList高&lt;br&gt;但是如果需要大量的访问元素的话，ArrayList执行效率较LinkedList高。&lt;br&gt;&lt;/font&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;理解LinkedList&quot;&gt;&lt;a href=&quot;#理解LinkedList&quot; class=&quot;headerlink&quot; title=&quot;理解LinkedList&quot;&gt;&lt;/a&gt;理解LinkedList&lt;/h2&gt;&lt;p&gt;##概述&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://somefish475.github.io/2016/05/09/%E6%9C%89%E8%B6%A3%E7%9A%84%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%8F%B7+/"/>
+    <id>http://somefish475.github.io/2016/05/09/有趣的操作符号+/</id>
+    <published>2016-05-09T13:58:52.137Z</published>
+    <updated>2016-05-09T14:21:59.031Z</updated>
+    
+    <content type="html">&lt;hr&gt;
+&lt;h2 id=&quot;有趣的操作符号：”-”&quot;&gt;&lt;a href=&quot;#有趣的操作符号：”-”&quot; class=&quot;headerlink&quot; title=&quot;有趣的操作符号：”+=”&quot;&gt;&lt;/a&gt;有趣的操作符号：”+=”&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;是在importNew上看到的，问题来源于StackOverFlow。一直都记着。&lt;br&gt;一直以为&lt;/p&gt;
+&lt;p&gt;&lt;font face=&quot;黑体&quot; size=&quot;5&quot;&gt;i+=j&lt;/font&gt;&lt;br&gt;就是简单的&lt;/p&gt;
+&lt;p&gt;&lt;font face=&quot;黑体&quot; size=&quot;5&quot;&gt;i=i+j&lt;/font&gt;&lt;br&gt;直到看到了他人的智慧。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##如果这么做&lt;br&gt;    int i = 10;&lt;br&gt;    long j = 8;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;使用i+=j的时候是没问题的，但是如果是i=i+j的话会报错-&amp;gt;Type mismatch: cannot convert from long to int
+
+纠正的方法有两种：
+1.使变量i成为long类型
+2.将i=i+j换成i=(int)(i+j)
+
+这意味着i+=j其实是i=(Type of i)(i + j)
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;有趣的操作符号：”-”&quot;&gt;&lt;a href=&quot;#有趣的操作符号：”-”&quot; class=&quot;headerlink&quot; title=&quot;有趣的操作符号：”+=”&quot;&gt;&lt;/a&gt;有趣的操作符号：”+=”&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;是在importNew上看到
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://somefish475.github.io/2016/05/08/ArrayList/"/>
+    <id>http://somefish475.github.io/2016/05/08/ArrayList/</id>
+    <published>2016-05-08T06:14:15.510Z</published>
+    <updated>2016-05-11T02:21:10.156Z</updated>
+    
+    <content type="html">&lt;hr&gt;
+&lt;h2 id=&quot;ArrayList原理以及实现&quot;&gt;&lt;a href=&quot;#ArrayList原理以及实现&quot; class=&quot;headerlink&quot; title=&quot;ArrayList原理以及实现&quot;&gt;&lt;/a&gt;ArrayList原理以及实现&lt;/h2&gt;&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;h2 id=&quot;在源码中是这样介绍的&quot;&gt;&lt;a href=&quot;#在源码中是这样介绍的&quot; class=&quot;headerlink&quot; title=&quot;在源码中是这样介绍的&quot;&gt;&lt;/a&gt;在源码中是这样介绍的&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Resizable-array implementation of the &lt;tt&gt;List&lt;/tt&gt; interface.  Implements all optional list operations, and permits all elements, including &lt;tt&gt;null&lt;/tt&gt;.  In addition to implementing the &lt;tt&gt;List&lt;/tt&gt; interface, this class provides methods to manipulate the size of the array that is used internally to store the list.  (This class is roughly equivalent to &lt;tt&gt;Vector&lt;/tt&gt;, except that it is unsynchronized.)&lt;/p&gt;
+&lt;p&gt;大致的意思是说实现了List接口，允许null值，允许重复值,是非同步的。大体上和Vector相似&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;ArrayList是相对来说比较简单的一种数据结构，最重要的是可以动态的调整容量的大小，可以认为是我们常说的“动态数组”。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ArrayList&amp;lt;String&amp;gt; arrayList = new ArrayList&amp;lt;String&amp;gt;();
+    arrayList.add(&amp;quot;第一节：java&amp;quot;);
+    arrayList.add(&amp;quot;第二节：C#&amp;quot;);
+    arrayList.add(&amp;quot;第三节：C++&amp;quot;);
+    arrayList.remove(0);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;/arrayList/addFromArrayList1.png&quot; alt=&quot;addFromArrayList1&quot;&gt;&lt;br&gt;&lt;img src=&quot;/arrayList/addFromArrayList2.png&quot; alt=&quot;addFromArrayList1&quot;&gt;&lt;br&gt;&lt;img src=&quot;/arrayList/addFromArrayList3.png&quot; alt=&quot;addFromArrayList1&quot;&gt;&lt;br&gt;&lt;img src=&quot;/arrayList/remoceFromArrayList1.png&quot; alt=&quot;addFromArrayList1&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在Debug模式下可以看到,数组初始化容量大小为10.&lt;br&gt;执行add方法添加成员后成员按顺序进入数组。&lt;br&gt;执行remove方法，删除排在前面的成员后，后面的成员向前排一个位置。&lt;br&gt;虽然没有写出删除排在中间的成员的情况，但是不难想象，在此成员前面的成员保持不变，在此成员后面的成员向前排一个位置。  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##add方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public boolean add(E e) {  
+    ensureCapacityInternal(size + 1);  // Increments modCount!!
+    elementData[size++] = e;
+    return true;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;可以看到自动扩容的重点就在ensureCapacityInternal(int minCapacity)方法中&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;来看一下其中的源码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;private static final int DEFAULT_CAPACITY = 10;
+private static final Object[] EMPTY_ELEMENTDATA = {};
+private transient Object[] elementData;    //当前数组
+
+
+ private void ensureCapacityInternal(int minCapacity) {
+    if (elementData == EMPTY_ELEMENTDATA) {
+        minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);
+    }
+
+    ensureExplicitCapacity(minCapacity);
+}
+
+private void ensureExplicitCapacity(int minCapacity) {
+    modCount++;
+
+    // overflow-conscious code
+    if (minCapacity - elementData.length &amp;gt; 0)
+        grow(minCapacity);
+}
+
+private void grow(int minCapacity) {
+    // overflow-conscious code
+    int oldCapacity = elementData.length;
+    int newCapacity = oldCapacity + (oldCapacity &amp;gt;&amp;gt; 1);
+    if (newCapacity - minCapacity &amp;lt; 0)
+        newCapacity = minCapacity;
+    if (newCapacity - MAX_ARRAY_SIZE &amp;gt; 0)
+        newCapacity = hugeCapacity(minCapacity);
+    // minCapacity is usually close to size, so this is a win:
+    elementData = Arrays.copyOf(elementData, newCapacity);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;可以从&lt;br&gt;if (minCapacity - elementData.length &amp;gt; 0)&lt;br&gt;grow(minCapacity);&lt;br&gt;看出当增加数据的时候，如果数组容量大小不够的时候，会通过grow(int minCapacity)方法增长0.5倍,然后将原来的数组成员通过Arrays.copyOf(elementData, newCapacity)方法复制到新的数组中。&lt;br&gt;例如，数组默认容量大小是10，当增加第11个数组成员的时候，数组容量会增长为15。具体情况如图所示：&lt;br&gt;&lt;img src=&quot;/arrayList/arrayListSize1.png&quot; alt=&quot;addFromArrayList1&quot;&gt;&lt;br&gt;&lt;img src=&quot;/arrayList/arrayListSize2.png&quot; alt=&quot;addFromArrayList1&quot;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##set方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public E set(int index, E element) {
+    rangeCheck(index);
+
+    E oldValue = elementData(index);
+    elementData[index] = element;
+    return oldValue;
+}
+
+private void rangeCheck(int index) {
+    if (index &amp;gt;= size)
+        throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;先做index检查，当参数大小大于等于数组容量大小的时候会抛出一个异常&lt;br&gt;IndexOutOfBoundsException(outOfBoundsMsg(index));&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##get方法&lt;br&gt;    public E get(int index) {&lt;br&gt;        rangeCheck(index);&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    return elementData(index);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;依然是先做index检查,然后就是返回索引位置的成员&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##remove方法&lt;br&gt;    public E remove(int index) {&lt;br&gt;        rangeCheck(index);&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    modCount++;
+    E oldValue = elementData(index);
+
+    int numMoved = size - index - 1;
+    if (numMoved &amp;gt; 0)
+        System.arraycopy(elementData, index+1, elementData, index,
+                         numMoved);//后面的成员向前移
+    elementData[--size] = null; // clear to let GC do its work
+    //最后一个成员变成null
+    return oldValue;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;依然是做index检查，然后通过System.arraycopy()方法复制得到了一个新的数组,最后把最后一个成员设置成null。&lt;br&gt;源码注释已经表达的很清楚了：&lt;br&gt;Removes the element at the specified position in this list.&lt;br&gt;Shifts any subsequent elements to the left (subtracts one from their indices)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;font color=&quot;red&quot;&gt;&lt;br&gt;使用ArrayList进行插入和删除操作效率不会太高&lt;br&gt;&lt;/font&gt;
+
+
+
+
+
+
+
+</content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;ArrayList原理以及实现&quot;&gt;&lt;a href=&quot;#ArrayList原理以及实现&quot; class=&quot;headerlink&quot; title=&quot;ArrayList原理以及实现&quot;&gt;&lt;/a&gt;ArrayList原理以及实现&lt;/h2&gt;&lt;h1 id=&quot;概述&quot;&gt;&lt;a h
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>hello-test</title>

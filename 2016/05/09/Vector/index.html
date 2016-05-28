@@ -82,19 +82,42 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="理解Vector##概述
+
+Vector也是比较简单的数据结构。可重复,允许null的集合初始化容量大小为10两倍容量大小自动扩容可用Iterator进行遍历
+##add方法
+
+private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+
+  public synchronized boolean add(E e) {">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://somefish475.github.io/2016/05/02/hello-world/index.html">
+<meta property="og:title" content="SomeFish">
+<meta property="og:url" content="http://somefish475.github.io/2016/05/09/Vector/index.html">
 <meta property="og:site_name" content="SomeFish">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-05-02T02:41:46.120Z">
+<meta property="og:description" content="理解Vector##概述
+
+Vector也是比较简单的数据结构。可重复,允许null的集合初始化容量大小为10两倍容量大小自动扩容可用Iterator进行遍历
+##add方法
+
+private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+
+  public synchronized boolean add(E e) {">
+<meta property="og:image" content="http://somefish475.github.io/Vector/sizeFromVector1.png">
+<meta property="og:image" content="http://somefish475.github.io/Vector/sizeFromVector2.png">
+<meta property="og:image" content="http://somefish475.github.io/Vector/removeFromVector1.png">
+<meta property="og:image" content="http://somefish475.github.io/Vector/removeFromVector2.png">
+<meta property="og:updated_time" content="2016-05-18T13:52:39.313Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="SomeFish">
+<meta name="twitter:description" content="理解Vector##概述
+
+Vector也是比较简单的数据结构。可重复,允许null的集合初始化容量大小为10两倍容量大小自动扩容可用Iterator进行遍历
+##add方法
+
+private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+
+  public synchronized boolean add(E e) {">
+<meta name="twitter:image" content="http://somefish475.github.io/Vector/sizeFromVector1.png">
 
 
 
@@ -112,7 +135,7 @@ Quick">
   };
 </script>
 
-  <title> Hello World | SomeFish </title>
+  <title>  | SomeFish </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +275,7 @@ Quick">
             
             
               
-                Hello World
+                
               
             
           </h1>
@@ -264,8 +287,8 @@ Quick">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-02T10:41:46+08:00" content="2016-05-02">
-              2016-05-02
+            <time itemprop="dateCreated" datetime="2016-05-09T22:49:20+08:00" content="2016-05-09">
+              2016-05-09
             </time>
           </span>
 
@@ -292,15 +315,94 @@ Quick">
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <hr>
+<h2 id="理解Vector"><a href="#理解Vector" class="headerlink" title="理解Vector"></a>理解Vector</h2><p>##概述</p>
+<blockquote>
+<p>Vector也是比较简单的数据结构。<br>可重复,允许null的集合<br>初始化容量大小为10<br>两倍容量大小自动扩容<br>可用Iterator进行遍历</p>
+<p>##add方法</p>
+</blockquote>
+<pre><code>private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+
+  public synchronized boolean add(E e) {
+    modCount++;
+    ensureCapacityHelper(elementCount + 1);
+    elementData[elementCount++] = e;
+    return true;
+}
+
+private void ensureCapacityHelper(int minCapacity) {
+    // overflow-conscious code
+    if (minCapacity - elementData.length &gt; 0)
+        grow(minCapacity);
+}
+
+private void grow(int minCapacity) {
+    // overflow-conscious code
+    int oldCapacity = elementData.length;
+    int newCapacity = oldCapacity + ((capacityIncrement &gt; 0) ?
+                                     capacityIncrement : oldCapacity);
+    if (newCapacity - minCapacity &lt; 0)
+        newCapacity = minCapacity;
+    if (newCapacity - MAX_ARRAY_SIZE &gt; 0)
+        newCapacity = hugeCapacity(minCapacity);
+    elementData = Arrays.copyOf(elementData, newCapacity);
+}
+
+private static int hugeCapacity(int minCapacity) {
+    if (minCapacity &lt; 0) // overflow
+        throw new OutOfMemoryError();
+    return (minCapacity &gt; MAX_ARRAY_SIZE) ?
+        Integer.MAX_VALUE :
+        MAX_ARRAY_SIZE;
+}
+</code></pre><blockquote>
+<p>进入add方法后又调用了ensureCapacityHelper方法,进行index检查,如果Vector容量大小不够时，通过grow方法进行扩容.<br>capacityIncrement初始化为0,容量大小初始化为10，可以看到当capacityIncrement&gt;0的时候扩容的大小为capacityIncrement，否则扩容为原来的两倍大小。<br>也就是说Vector扩容后为原来容量大小的两倍<br>可以看看以下例子</p>
+</blockquote>
+<pre><code> List vector = new Vector();
+vector.add(null);
+vector.add(&quot;java&quot;);
+vector.add(&quot;c&quot;);
+vector.add(&quot;c++&quot;);
+vector.add(&quot;java&quot;);
+vector.add(&quot;c#&quot;);
+vector.add(&quot;python&quot;);
+vector.add(&quot;r&quot;);
+vector.add(&quot;ruby&quot;);
+vector.add(&quot;javascript&quot;);
+vector.add(&quot;json&quot;);
+vector.add(&quot;css&quot;);
+</code></pre><blockquote>
+<p><img src="/Vector/sizeFromVector1.png" alt="sizeFromVector1"><br>达到容量大小后，再添加一个成员元素后<br><img src="/Vector/sizeFromVector2.png" alt="sizeFromVector2"></p>
+<p>##set方法<br>     public synchronized E set(int index, E element) {<br>        if (index &gt;= elementCount)<br>            throw new ArrayIndexOutOfBoundsException(index);</p>
+</blockquote>
+<pre><code>    E oldValue = elementData(index);
+    elementData[index] = element;
+    return oldValue;
+}
+</code></pre><blockquote>
+<p>进入方法后，进行index检查，然后通过索引值获取相应的元素。</p>
+</blockquote>
+<p>##get方法<br>    public synchronized E get(int index) {<br>        if (index &gt;= elementCount)<br>            throw new ArrayIndexOutOfBoundsException(index);</p>
+<pre><code>    return elementData(index);
+}
+</code></pre><blockquote>
+<p>get方法比较简单，首先是进行index检查，没问题就获得索引位置的元素。</p>
+</blockquote>
+<p>#remove方法<br>     public synchronized E remove(int index) {<br>        modCount++;<br>        if (index &gt;= elementCount)<br>            throw new ArrayIndexOutOfBoundsException(index);<br>        E oldValue = elementData(index);</p>
+<pre><code>    int numMoved = elementCount - index - 1;
+    if (numMoved &gt; 0)
+        System.arraycopy(elementData, index+1, elementData, index,
+                         numMoved);
+        //后面的元素向前移动
+    elementData[--elementCount] = null; // Let gc do its work
+    //最后一个元素进行null处理
+    return oldValue;
+}
+</code></pre><blockquote>
+<p>进入remove方法后依然是先进行index检查，然后将在被删元素后面的元素向前移，最后一个元素进行null处理，这一点与ArrayList的remove是一样的。<br>可以看看下图例子：<br><img src="/Vector/removeFromVector1.png" alt="removeFromVector1"><br>进行删除操作之后<br><img src="/Vector/removeFromVector2.png" alt="removeFromVector2">  </p>
+</blockquote>
+<font color="red"><br>可以看到Vector的增删改查方法都使用了synchronized进行修饰，也就是说Vector是线程安全的。<br></font>
+
 
       
     </div>
@@ -324,12 +426,16 @@ Quick">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/05/09/LinkedList/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/05/02/test/" rel="prev" title="hello-test">
-                hello-test <i class="fa fa-chevron-right"></i>
+              <a href="/2016/05/11/HashMap/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -457,7 +563,7 @@ Quick">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解Vector"><span class="nav-number">1.</span> <span class="nav-text">理解Vector</span></a></li></ol></div>
             
           </div>
         </section>
