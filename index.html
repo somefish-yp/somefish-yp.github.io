@@ -295,7 +295,9 @@
       
         
           
-            <h2 id="Queue原理分析"><a href="#Queue原理分析" class="headerlink" title="Queue原理分析"></a>Queue原理分析</h2><pre><code>public interface Queue&lt;E&gt; extends Collection&lt;E&gt;
+            <hr>
+<h1 id="Queue原理分析"><a href="#Queue原理分析" class="headerlink" title="Queue原理分析"></a>Queue原理分析</h1><hr>
+<pre><code>public interface Queue&lt;E&gt; extends Collection&lt;E&gt;
 </code></pre><blockquote>
 <p>通过看Queue的签名可以直观的看到，Queue是一个接口，继承于Collection。<br>Queue提供了以下几个方法</p>
 </blockquote>
@@ -1220,7 +1222,8 @@ long j = 8;
         
           
             <hr>
-<h2 id="title-ArrayList原理以及实现"><a href="#title-ArrayList原理以及实现" class="headerlink" title="title:ArrayList原理以及实现"></a>title:ArrayList原理以及实现</h2><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="在源码中是这样介绍的"><a href="#在源码中是这样介绍的" class="headerlink" title="在源码中是这样介绍的"></a>在源码中是这样介绍的</h2><blockquote>
+<h1 id="ArrayList原理以及实现"><a href="#ArrayList原理以及实现" class="headerlink" title="ArrayList原理以及实现"></a>ArrayList原理以及实现</h1><hr>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h2 id="在源码中是这样介绍的"><a href="#在源码中是这样介绍的" class="headerlink" title="在源码中是这样介绍的"></a>在源码中是这样介绍的</h2><blockquote>
 <p>Resizable-array implementation of the <tt>List</tt> interface.  Implements all optional list operations, and permits all elements, including <tt>null</tt>.  In addition to implementing the <tt>List</tt> interface, this class provides methods to manipulate the size of the array that is used internally to store the list.  (This class is roughly equivalent to <tt>Vector</tt>, except that it is unsynchronized.)</p>
 <p>大致的意思是说实现了List接口，允许null值，允许重复值,是非同步的。大体上和Vector相似</p>
 </blockquote>
