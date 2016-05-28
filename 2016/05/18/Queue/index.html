@@ -102,7 +102,7 @@ boolean add(E e);
 boolean offer(E e);    
 E remove();  
 E poll();">
-<meta property="og:updated_time" content="2016-05-18T14:12:57.336Z">
+<meta property="og:updated_time" content="2016-05-28T11:30:06.607Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SomeFish">
 <meta name="twitter:description" content="Queue原理分析public interface Queue&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt;
@@ -310,8 +310,7 @@ E poll();">
       
 
       
-        <hr>
-<h2 id="Queue原理分析"><a href="#Queue原理分析" class="headerlink" title="Queue原理分析"></a>Queue原理分析</h2><pre><code>public interface Queue&lt;E&gt; extends Collection&lt;E&gt;
+        <h2 id="Queue原理分析"><a href="#Queue原理分析" class="headerlink" title="Queue原理分析"></a>Queue原理分析</h2><pre><code>public interface Queue&lt;E&gt; extends Collection&lt;E&gt;
 </code></pre><blockquote>
 <p>通过看Queue的签名可以直观的看到，Queue是一个接口，继承于Collection。<br>Queue提供了以下几个方法</p>
 </blockquote>
@@ -321,8 +320,7 @@ E remove();
 E poll();  
 E element();  
 E peek();
-</code></pre><p>&gt;</p>
-<blockquote>
+</code></pre><blockquote>
 <p>队列是一种特殊的线性表，实现了该接口的有LinkedList。<br>与单向链表不同，队列是FIFO(first-in-first-out),先进先出。</p>
 </blockquote>
 <pre><code>Queue&lt;String&gt; que = new LinkedList&lt;String&gt;();
