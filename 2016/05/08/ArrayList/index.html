@@ -82,25 +82,28 @@
 
 
 
-<meta name="description" content="ArrayList原理以及实现概述在源码中是这样介绍的
-Resizable-array implementation of the List interface.  Implements all optional list operations, and permits all elements, including null.  In addition to implementing the L">
+<meta name="description" content="ArrayList原理以及实现
+概述在源码中是这样介绍的
+Resizable-array implementation of the List interface.  Implements all optional list operations, and permits all elements, including null.  In addition to implementing the">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SomeFish">
 <meta property="og:url" content="http://somefish475.github.io/2016/05/08/ArrayList/index.html">
 <meta property="og:site_name" content="SomeFish">
-<meta property="og:description" content="ArrayList原理以及实现概述在源码中是这样介绍的
-Resizable-array implementation of the List interface.  Implements all optional list operations, and permits all elements, including null.  In addition to implementing the L">
+<meta property="og:description" content="ArrayList原理以及实现
+概述在源码中是这样介绍的
+Resizable-array implementation of the List interface.  Implements all optional list operations, and permits all elements, including null.  In addition to implementing the">
 <meta property="og:image" content="http://somefish475.github.io/arrayList/addFromArrayList1.png">
 <meta property="og:image" content="http://somefish475.github.io/arrayList/addFromArrayList2.png">
 <meta property="og:image" content="http://somefish475.github.io/arrayList/addFromArrayList3.png">
 <meta property="og:image" content="http://somefish475.github.io/arrayList/remoceFromArrayList1.png">
 <meta property="og:image" content="http://somefish475.github.io/arrayList/arrayListSize1.png">
 <meta property="og:image" content="http://somefish475.github.io/arrayList/arrayListSize2.png">
-<meta property="og:updated_time" content="2016-05-28T11:34:17.922Z">
+<meta property="og:updated_time" content="2016-05-28T11:38:32.198Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SomeFish">
-<meta name="twitter:description" content="ArrayList原理以及实现概述在源码中是这样介绍的
-Resizable-array implementation of the List interface.  Implements all optional list operations, and permits all elements, including null.  In addition to implementing the L">
+<meta name="twitter:description" content="ArrayList原理以及实现
+概述在源码中是这样介绍的
+Resizable-array implementation of the List interface.  Implements all optional list operations, and permits all elements, including null.  In addition to implementing the">
 <meta name="twitter:image" content="http://somefish475.github.io/arrayList/addFromArrayList1.png">
 
 
@@ -299,7 +302,9 @@ Resizable-array implementation of the List interface.  Implements all optional l
       
 
       
-        <h2 id="ArrayList原理以及实现"><a href="#ArrayList原理以及实现" class="headerlink" title="ArrayList原理以及实现"></a>ArrayList原理以及实现</h2><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="在源码中是这样介绍的"><a href="#在源码中是这样介绍的" class="headerlink" title="在源码中是这样介绍的"></a>在源码中是这样介绍的</h2><blockquote>
+        <hr>
+<p>ArrayList原理以及实现</p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="在源码中是这样介绍的"><a href="#在源码中是这样介绍的" class="headerlink" title="在源码中是这样介绍的"></a>在源码中是这样介绍的</h2><blockquote>
 <p>Resizable-array implementation of the <tt>List</tt> interface.  Implements all optional list operations, and permits all elements, including <tt>null</tt>.  In addition to implementing the <tt>List</tt> interface, this class provides methods to manipulate the size of the array that is used internally to store the list.  (This class is roughly equivalent to <tt>Vector</tt>, except that it is unsynchronized.)</p>
 <p>大致的意思是说实现了List接口，允许null值，允许重复值,是非同步的。大体上和Vector相似</p>
 </blockquote>
@@ -565,7 +570,7 @@ private void rangeCheck(int index) {
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList原理以及实现"><span class="nav-number">1.</span> <span class="nav-text">ArrayList原理以及实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number"></span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在源码中是这样介绍的"><span class="nav-number">1.</span> <span class="nav-text">在源码中是这样介绍的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#add方法"><span class="nav-number">2.</span> <span class="nav-text">add方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set方法"><span class="nav-number">3.</span> <span class="nav-text">set方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get方法"><span class="nav-number">4.</span> <span class="nav-text">get方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#remove方法"><span class="nav-number">5.</span> <span class="nav-text">remove方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在源码中是这样介绍的"><span class="nav-number">1.1.</span> <span class="nav-text">在源码中是这样介绍的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#add方法"><span class="nav-number">1.2.</span> <span class="nav-text">add方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set方法"><span class="nav-number">1.3.</span> <span class="nav-text">set方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get方法"><span class="nav-number">1.4.</span> <span class="nav-text">get方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#remove方法"><span class="nav-number">1.5.</span> <span class="nav-text">remove方法</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
