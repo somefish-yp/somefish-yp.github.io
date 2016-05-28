@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://somefish475.github.io/"/>
-  <updated>2016-05-28T12:01:53.131Z</updated>
+  <updated>2016-05-28T12:08:32.914Z</updated>
   <id>http://somefish475.github.io/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://somefish475.github.io/2016/05/18/Queue/"/>
     <id>http://somefish475.github.io/2016/05/18/Queue/</id>
     <published>2016-05-18T13:46:39.807Z</published>
-    <updated>2016-05-28T12:01:53.131Z</updated>
+    <updated>2016-05-28T12:08:32.914Z</updated>
     
-    <content type="html">&lt;pre&gt;&lt;code&gt;public interface Queue&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt;
+    <content type="html">&lt;p&gt;categories: 编程 &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public interface Queue&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;通过看Queue的签名可以直观的看到，Queue是一个接口，继承于Collection。&lt;br&gt;Queue提供了以下几个方法&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -79,9 +80,10 @@ E peek();
     
     <summary type="html">
     
-      &lt;pre&gt;&lt;code&gt;public interface Queue&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt;
+      &lt;p&gt;categories: 编程 &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public interface Queue&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;通过看Queue的签名可以直观的看到，Queue是一个接口，继承于Collect
+&lt;p&gt;通过看Queue的签名可以直观的看
     
     </summary>
     
