@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://somefish475.github.io/"/>
-  <updated>2016-05-28T12:11:28.796Z</updated>
+  <updated>2016-05-28T12:13:03.065Z</updated>
   <id>http://somefish475.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://somefish475.github.io/2016/05/18/Queue/"/>
     <id>http://somefish475.github.io/2016/05/18/Queue/</id>
     <published>2016-05-18T13:46:39.807Z</published>
-    <updated>2016-05-28T12:11:28.796Z</updated>
+    <updated>2016-05-28T12:13:03.065Z</updated>
     
     <content type="html">&lt;pre&gt;&lt;code&gt;public interface Queue&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
@@ -85,8 +85,10 @@ E peek();
     
     </summary>
     
-      <category term="编程" scheme="http://somefish475.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+      <category term="编程" scheme="http://somefish475.github.io/categories/programming/"/>
     
+    
+      <category term="个人" scheme="http://somefish475.github.io/tags/%E4%B8%AA%E4%BA%BA/"/>
     
   </entry>
   
