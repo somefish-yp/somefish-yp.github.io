@@ -82,31 +82,40 @@
 
 
 
-<meta name="description" content="Stack值栈##概述值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。只说说本类扩展的方法，至于继承而来的方法就不说了。
-##push方法     public E push(E item) {        addElement(item);
+<meta name="description" content="Stack值栈概述值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。只说说本类扩展的方法，至于继承而来的方法就不说了。
+push方法 public E push(E item) {
+    addElement(item);
+
     return item;
 }
 
-public synchronized void addElement(E obj)">
+public synchronized void addElement(E obj) {
+    mod">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SomeFish">
 <meta property="og:url" content="http://somefish475.github.io/2016/05/11/Stack/index.html">
 <meta property="og:site_name" content="SomeFish">
-<meta property="og:description" content="Stack值栈##概述值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。只说说本类扩展的方法，至于继承而来的方法就不说了。
-##push方法     public E push(E item) {        addElement(item);
+<meta property="og:description" content="Stack值栈概述值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。只说说本类扩展的方法，至于继承而来的方法就不说了。
+push方法 public E push(E item) {
+    addElement(item);
+
     return item;
 }
 
-public synchronized void addElement(E obj)">
-<meta property="og:updated_time" content="2016-05-28T11:30:20.419Z">
+public synchronized void addElement(E obj) {
+    mod">
+<meta property="og:updated_time" content="2016-05-28T11:33:33.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SomeFish">
-<meta name="twitter:description" content="Stack值栈##概述值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。只说说本类扩展的方法，至于继承而来的方法就不说了。
-##push方法     public E push(E item) {        addElement(item);
+<meta name="twitter:description" content="Stack值栈概述值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。只说说本类扩展的方法，至于继承而来的方法就不说了。
+push方法 public E push(E item) {
+    addElement(item);
+
     return item;
 }
 
-public synchronized void addElement(E obj)">
+public synchronized void addElement(E obj) {
+    mod">
 
 
 
@@ -304,9 +313,11 @@ public synchronized void addElement(E obj)">
       
 
       
-        <h2 id="Stack值栈"><a href="#Stack值栈" class="headerlink" title="Stack值栈"></a>Stack值栈</h2><p>##概述<br>值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。<br>只说说本类扩展的方法，至于继承而来的方法就不说了。</p>
-<p>##push方法<br>     public E push(E item) {<br>        addElement(item);</p>
-<pre><code>    return item;
+        <h2 id="Stack值栈"><a href="#Stack值栈" class="headerlink" title="Stack值栈"></a>Stack值栈</h2><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>值栈继承于Vector，也就是说容量大小也是动态增加的。允许null和重复值。<br>只说说本类扩展的方法，至于继承而来的方法就不说了。</p>
+<h2 id="push方法"><a href="#push方法" class="headerlink" title="push方法"></a>push方法</h2><pre><code> public E push(E item) {
+    addElement(item);
+
+    return item;
 }
 
 public synchronized void addElement(E obj) {
@@ -317,8 +328,7 @@ public synchronized void addElement(E obj) {
 </code></pre><blockquote>
 <p>进入push(E item)调用的是Vector类中的addElement(E obj)方法。再深入的方法我就不贴出来了，可以去看看Vector类。  </p>
 </blockquote>
-<p>##pop方法</p>
-<pre><code>public synchronized E pop() {
+<h2 id="pop方法"><a href="#pop方法" class="headerlink" title="pop方法"></a>pop方法</h2><pre><code>public synchronized E pop() {
     E       obj;
     int     len = size();
 
@@ -338,8 +348,7 @@ public synchronized E peek() {
 </code></pre><blockquote>
 <p>进入pop()方法调用的也是Vector类中的方法removeElementAt(int index)方法。<br>而size()方法是Vector中一个返回容量成员大小的方法，接下来又调用了本类扩展的peek()方法，该方法返回的是末尾成员。<br>可以看到，pop()方法是获取了末尾成员后删除末尾成员。</p>
 </blockquote>
-<p>##peek方法</p>
-<pre><code>public synchronized E peek() {
+<h2 id="peek方法"><a href="#peek方法" class="headerlink" title="peek方法"></a>peek方法</h2><pre><code>public synchronized E peek() {
     int     len = size();
 
     if (len == 0)
@@ -349,8 +358,7 @@ public synchronized E peek() {
 </code></pre><blockquote>
 <p>很直观的可以看到，该方法是返回末尾成员。</p>
 </blockquote>
-<p>##search(Object o)方法</p>
-<pre><code>public synchronized int search(Object o) {
+<h2 id="search-Object-o-方法"><a href="#search-Object-o-方法" class="headerlink" title="search(Object o)方法"></a>search(Object o)方法</h2><pre><code>public synchronized int search(Object o) {
     int i = lastIndexOf(o);
 
     if (i &gt;= 0) {
@@ -381,8 +389,7 @@ public synchronized E peek() {
 </code></pre><blockquote>
 <p>这个方法是查询成员所在的位置<br>该方法调用了Vector中的lastIndexOf(Object o)方法，然后又进入了lastIndexOf(Object o ,int index)方法。<br>可以看到，查找成员从末尾开始找，也就是从栈顶，因为值栈是先进后出的。</p>
 </blockquote>
-<p>##empty()方法</p>
-<pre><code> public boolean empty() {
+<h2 id="empty-方法"><a href="#empty-方法" class="headerlink" title="empty()方法"></a>empty()方法</h2><pre><code> public boolean empty() {
     return size() == 0;
 }
 </code></pre><blockquote>
@@ -548,7 +555,7 @@ public synchronized E peek() {
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Stack值栈"><span class="nav-number">1.</span> <span class="nav-text">Stack值栈</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Stack值栈"><span class="nav-number">1.</span> <span class="nav-text">Stack值栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#push方法"><span class="nav-number">3.</span> <span class="nav-text">push方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pop方法"><span class="nav-number">4.</span> <span class="nav-text">pop方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#peek方法"><span class="nav-number">5.</span> <span class="nav-text">peek方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#search-Object-o-方法"><span class="nav-number">6.</span> <span class="nav-text">search(Object o)方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#empty-方法"><span class="nav-number">7.</span> <span class="nav-text">empty()方法</span></a></li></ol></div>
             
           </div>
         </section>
